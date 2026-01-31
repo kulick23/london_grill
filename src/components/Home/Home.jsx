@@ -33,7 +33,7 @@ const Home = () => {
 
         <div className={styles.heroMedia}>
           <div className={styles.photoFrame}>
-            <img src={heroImage} alt="Restaurant table" />
+            <img src={heroImage} alt="Restaurant table" loading="lazy" decoding="async" />
           </div>
        
           <div className={styles.glow}></div>

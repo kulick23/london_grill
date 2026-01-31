@@ -78,7 +78,7 @@ const Menu = () => {
   return (
     <div className={s.page}>
       <section className={s.hero}>
-        <img className={s.heroImage} src={heroImage} alt="Restaurant interior" />
+        <img className={s.heroImage} src={heroImage} alt="Restaurant interior" loading="lazy" decoding="async" />
         <div className={s.heroOverlay}></div>
         <div className={s.heroContent}>
           <p className={s.heroEyebrow}>Lunch & Dinner</p>

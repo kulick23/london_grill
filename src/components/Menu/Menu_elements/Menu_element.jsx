@@ -16,7 +16,7 @@ const MenuElement = (props) => {
   return (
     <div className={s.itemContainer}>
       <div className={s.item}>
-        <img src={props.img} alt={props.name} />
+        <img src={props.img} alt={props.name} loading="lazy" decoding="async" />
       </div>
       <div className={s.text}>
         {props.name}

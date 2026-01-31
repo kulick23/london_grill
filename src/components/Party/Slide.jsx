@@ -8,7 +8,7 @@ const Slide = (props) => {
       <div>
         <div className='des'>Promotion: {props.des}</div>
         <div>
-          <img src={props.img} alt={props.name} />
+          <img src={props.img} alt={props.name} loading="lazy" decoding="async" />
         </div>
       </div>
     </div>

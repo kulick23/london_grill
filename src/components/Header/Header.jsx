@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <nav className={s.nav}>
             <div className={s.brand}>
-                <img className={s.logo} src={logo} alt="Bar logo" />
+                <img className={s.logo} src={logo} alt="Bar logo" loading="lazy" decoding="async" />
                 <div className={s.brandText}>
                     <span className={s.brandName}>London Bar</span>
                     <span className={s.brandTag}>Grill & Bar</span>

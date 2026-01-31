@@ -77,7 +77,7 @@ const Slider = observer(() => {
               ‹
             </button>
             <article className="promo-card">
-              <img src={activePromo.img} alt={activePromo.name} />
+              <img src={activePromo.img} alt={activePromo.name} loading="lazy" decoding="async" />
               <div className="promo-card__content">
                 <span className="event-card__tag">Now</span>
                 <h3>{activePromo.name}</h3>
@@ -114,7 +114,7 @@ const Slider = observer(() => {
         <div className="events-grid">
           {grouped.upcoming.map((event) => (
             <article key={event.id} className="event-card">
-              <img src={event.img} alt={event.name} />
+              <img src={event.img} alt={event.name} loading="lazy" decoding="async" />
               <div className="event-card__content">
                 <span className="event-card__tag event-card__tag--upcoming">Upcoming</span>
                 <h3>{event.name}</h3>
@@ -136,7 +136,7 @@ const Slider = observer(() => {
         <div className="events-grid">
           {grouped.past.map((event) => (
             <article key={event.id} className="event-card event-card--past">
-              <img src={event.img} alt={event.name} />
+              <img src={event.img} alt={event.name} loading="lazy" decoding="async" />
               <div className="event-card__content">
                 <span className="event-card__tag event-card__tag--past">Past</span>
                 <h3>{event.name}</h3>
