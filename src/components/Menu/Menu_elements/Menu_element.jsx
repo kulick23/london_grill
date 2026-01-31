@@ -1,9 +1,17 @@
 import React from 'react';
 import s from './Menu_element.module.css';
 import orderStore from '../../../store/OrderStore';
+import { auth } from '../../../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const MenuElement = (props) => {
+  const navigate = useNavigate();
+
   const addToOrder = () => {
+    if (!auth.currentUser) {
+      navigate('/auth');
+      return;
+    }
     orderStore.addOrder({
       id: props.id,
       name: props.name,

@@ -17,6 +17,12 @@
     gap: 14px;
 }
 
+.brandLink {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+}
+
 .brandText {
     display: flex;
     flex-direction: column;
