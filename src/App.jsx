@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Order from './components/Order/Order';
 import Menu from './components/Menu/Menu';
@@ -14,6 +15,7 @@ const App = (props) => {
       <Header />
       <div className='app-wrapper-content'>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/orders" element={<Order/>} />
