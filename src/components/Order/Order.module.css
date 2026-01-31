@@ -16,6 +16,34 @@
   color: var(--muted);
 }
 
+.profileNote {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--sage-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profileRow {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.logoutButton {
+  border: 1px solid rgba(96, 126, 107, 0.3);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--sage-dark);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .dialogsItems {
   display: grid;
   gap: 18px;

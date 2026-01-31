@@ -3,7 +3,6 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
-import Profile from './components/Profile/Profile';
 import Order from './components/Order/Order';
 import Menu from './components/Menu/Menu';
 import Slider from './components/Party/Slider';
@@ -16,7 +15,6 @@ const App = (props) => {
       <div className='app-wrapper-content'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/orders" element={<Order/>} />
           <Route path="/menu" element={<Menu/>} />

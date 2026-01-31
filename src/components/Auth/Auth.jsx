@@ -18,7 +18,7 @@ const Auth = () => {
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
-      navigate('/profile');
+      navigate('/orders');
     } catch (error) {
       alert(error.message);
     }

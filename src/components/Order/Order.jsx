@@ -5,7 +5,7 @@ import Dropdown from './Dropdown';
 import orderStore from '../../store/OrderStore';
 import { observer } from 'mobx-react-lite';
 import { auth } from '../../firebase';
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
 const Order = observer(() => {
@@ -24,6 +24,15 @@ const Order = observer(() => {
 
     return () => unsubscribe();
   }, [navigate]);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/auth');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   if (!user) {
     return <div>Loading...</div>;
@@ -45,6 +54,10 @@ const Order = observer(() => {
       <div className={s.header}>
         <h1>Your order</h1>
         <p>Review your selection and choose a table before placing the order.</p>
+        <div className={s.profileRow}>
+          <div className={s.profileNote}>Profile: {user.email}</div>
+          <button onClick={handleLogout} className={s.logoutButton}>Logout</button>
+        </div>
       </div>
       {orderStore.orders.length > 0 ? (
         <div className={s.dialogsItems}>

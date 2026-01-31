@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import s from './Header.module.css'
-import logo from '../../assets/icons/logo.png'
+import s from './Header.module.css';
+import logo from '../../assets/icons/logo.png';
+import cartIcon from '../../assets/icons/Cart.svg';
+import orderStore from '../../store/OrderStore';
+import { observer } from 'mobx-react-lite';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../firebase';
 
-const Header = () => {
+const Header = observer(() => {
+    const itemsCount = orderStore.orders.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsub = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return () => unsub();
+    }, []);
+
     return (
         <nav className={s.nav}>
             <div className={s.brand}>
@@ -15,13 +30,19 @@ const Header = () => {
             </div>
             <div className={s.links}>
                 <NavLink to="/" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Home</NavLink>
-                <NavLink to="/profile" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Profile</NavLink>
-                <NavLink to="/orders" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Orders</NavLink>
                 <NavLink to="/menu" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Menu</NavLink>
                 <NavLink to="/party" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Party</NavLink>
+                {user ? (
+                    <NavLink to="/orders" className={s.cartButton} aria-label="Open cart">
+                        {itemsCount > 0 ? <span className={s.cartBadge}>{itemsCount}</span> : null}
+                        <img src={cartIcon} alt="Cart" loading="lazy" decoding="async" />
+                    </NavLink>
+                ) : (
+                    <NavLink to="/auth" className={s.loginButton}>Login</NavLink>
+                )}
             </div>
         </nav>
 
     )
-}
+});
 export default Header

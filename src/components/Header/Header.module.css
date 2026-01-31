@@ -41,6 +41,7 @@
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .link {
@@ -70,6 +71,59 @@
     border-color: rgb(96, 126, 107);
 }
 
+.cartButton {
+    margin-left: 18px;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgb(96, 126, 107);
+    box-shadow: 0 12px 24px rgba(96, 126, 107, 0.3);
+    text-decoration: none;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.cartButton img {
+    width: 22px;
+    height: 22px;
+}
+
+.loginButton {
+    margin-left: 18px;
+    text-decoration: none;
+    color: #f6f1e8;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 11px;
+    background: rgb(96, 126, 107);
+    box-shadow: 0 12px 24px rgba(96, 126, 107, 0.3);
+}
+
+.cartBadge {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1c1f1d;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
 .logo {
     height: 42px;
     object-fit: contain;
@@ -83,5 +137,11 @@
     }
     .links {
         gap: 10px;
+    }
+    .cartButton {
+        margin-left: 0;
+    }
+    .loginButton {
+        margin-left: 0;
     }
 }
