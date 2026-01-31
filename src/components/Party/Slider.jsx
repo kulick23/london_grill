@@ -27,6 +27,7 @@ const getStatus = (startDate, endDate) => {
 
 const Slider = observer(() => {
   const events = sliderStore.events;
+  const promos = sliderStore.promos;
   const [promoIndex, setPromoIndex] = useState(0);
 
   const grouped = useMemo(() => {
@@ -40,7 +41,7 @@ const Slider = observer(() => {
     );
   }, [events]);
 
-  const currentPromos = grouped.current;
+  const currentPromos = promos;
   const activePromo = currentPromos[promoIndex] || null;
 
   const nextPromo = () => {
@@ -77,14 +78,17 @@ const Slider = observer(() => {
               ‹
             </button>
             <article className="promo-card">
-              <img src={activePromo.img} alt={activePromo.name} loading="lazy" decoding="async" />
+              <div className="promo-card__media">
+                <img src={activePromo.img} alt={activePromo.title} loading="lazy" decoding="async" />
+                <div className="promo-card__overlay">
+                  <div className="promo-card__title">{activePromo.title}</div>
+                  <div className="promo-card__subtitle">{activePromo.subtitle}</div>
+                </div>
+              </div>
               <div className="promo-card__content">
                 <span className="event-card__tag">Now</span>
-                <h3>{activePromo.name}</h3>
-                <p>{activePromo.des}</p>
-                <div className="event-card__date">
-                  {formatDate(activePromo.startDate)} — {formatDate(activePromo.endDate)}
-                </div>
+                <h3>{activePromo.title}</h3>
+                <p>{activePromo.subtitle}</p>
               </div>
             </article>
             <button className="promo-arrow promo-arrow--right" onClick={nextPromo} aria-label="Next promotion">

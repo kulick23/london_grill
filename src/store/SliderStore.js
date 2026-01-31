@@ -5,8 +5,46 @@ import Slide3 from '../assets/Party/Thursday.jpg';
 import Slide4 from '../assets/Party/Friday.jpg';
 import Slide5 from '../assets/Party/Saturday.jpg';
 import Slide6 from '../assets/Party/Sunday.jpg';
+import Promo1 from '../assets/promo/IMG_2934_resized-min-884x590.jpg';
+import Promo2 from '../assets/promo/DSC_6923.jpg';
+import Promo3 from '../assets/promo/Настойки_74_resized-885x590.jpg';
+import Promo4 from '../assets/promo/Thursday.jpg';
+import Promo5 from '../assets/promo/Sunday.jpg';
 
 class SliderStore {
+  promos = [
+    {
+      id: 1,
+      img: Promo1,
+      title: "Monday & Tuesday",
+      subtitle: "20% off on all menu"
+    },
+    {
+      id: 2,
+      img: Promo2,
+      title: "Wednesday",
+      subtitle: "1+1 on tinctures"
+    },
+    {
+      id: 3,
+      img: Promo3,
+      title: "Thursday",
+      subtitle: "1+1 on cocktails"
+    },
+    {
+      id: 4,
+      img: Promo4,
+      title: "Friday & Saturday",
+      subtitle: "4+1 on tinctures"
+    },
+    {
+      id: 5,
+      img: Promo5,
+      title: "Sunday",
+      subtitle: "5+5 on tinctures"
+    }
+  ];
+
   events = [
     {
       id: 1,
