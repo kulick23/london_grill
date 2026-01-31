@@ -25,7 +25,7 @@ const Header = observer(() => {
                 <div className={s.brand}>
                 <img className={s.logo} src={logo} alt="Bar logo" loading="lazy" decoding="async" />
                 <div className={s.brandText}>
-                    <span className={s.brandName}>London Bar</span>
+                    <span className={s.brandName}>London Grill</span>
                     <span className={s.brandTag}>Grill & Bar</span>
                 </div>
                 </div>

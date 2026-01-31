@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import s from './Menu.module.css';
 import MenuElement from './Menu_elements/Menu_element';
-import heroImage from '../../assets/Party/Friday.jpg';
+import heroImage from '../../assets/img/hall.jpg';
 
 const drinkAssets = import.meta.glob('../../assets/drinks/**/*.{png,jpg,jpeg}', {
   eager: true,
@@ -87,7 +87,7 @@ const Menu = () => {
           <div className={s.heroMeta}>
             <span>12:00 — 01:00</span>
             <span>Open daily</span>
-            <span>Downtown London</span>
+            <span>Minsk/Vilnius</span>
           </div>
         </div>
       </section>
