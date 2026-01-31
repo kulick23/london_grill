@@ -20,7 +20,7 @@ const MenuElement = (props) => {
       </div>
       <div className={s.text}>
         {props.name}
-        <div>{props.ml} ml</div>
+        {props.ml ? <div>{props.ml} ml</div> : null}
       </div>
       <div className={s.text2}>{props.count} $</div>
       <button onClick={addToOrder} className={s.border}>Add</button>

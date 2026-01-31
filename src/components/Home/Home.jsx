@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 import heroImage from '../../assets/img/london.png';
-import plateImage from '../../assets/Coctails/Mojito.png';
+import plateImage from '../../assets/drinks/coctails/Mojito.png';
 
 const Home = () => {
   return (
