@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
-import heroImage from '../../assets/Party/Saturday.jpg';
+import heroImage from '../../assets/img/london.png';
 import plateImage from '../../assets/Coctails/Mojito.png';
 
 const Home = () => {
@@ -35,13 +35,7 @@ const Home = () => {
           <div className={styles.photoFrame}>
             <img src={heroImage} alt="Restaurant table" />
           </div>
-          <div className={styles.floatingCard}>
-            <img src={plateImage} alt="Signature cocktail" />
-            <div>
-              <p className={styles.cardTitle}>Signature Mojito</p>
-              <p className={styles.cardText}>Fresh mint • Citrus • Cane</p>
-            </div>
-          </div>
+       
           <div className={styles.glow}></div>
           <div className={styles.dots}></div>
         </div>
