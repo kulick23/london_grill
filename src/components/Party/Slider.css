@@ -1,15 +1,16 @@
 .container-slider {
-  max-width: 700px;
-  height: 500px;
-  margin: 50px auto 0;
+  max-width: 860px;
+  height: 520px;
+  margin: 40px auto 0;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
 }
 @media screen and (max-width: 700px){
   .container-slider {
-    margin: 100px 10px 0;
+    margin: 30px 10px 0;
+    height: 420px;
   }
 }
 .slide {
@@ -29,22 +30,27 @@
 }
 
 .btn-slide {
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: #f1f1f1;
-  border: 1px solid rgba(34, 34, 34, 0.287);
+  background: rgba(246, 241, 232, 0.9);
+  border: 1px solid rgba(96, 126, 107, 0.2);
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-slide img {
   width: 25px;
   height: 25px;
   pointer-events: none;
+}
+.btn-slide:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 18, 16, 0.12);
 }
 .prev {
   top: 50%;
@@ -66,35 +72,43 @@
   display: flex;
 }
 .dot {
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 3px solid #f1f1f1;
+  border: 2px solid rgba(246, 241, 232, 0.7);
   margin: 0 5px;
-  background: #f1f1f1;
+  background: rgba(246, 241, 232, 0.7);
 }
 .dot.active {
-  background: rgb(32, 32, 32);
+  background: rgb(96, 126, 107);
 }
 .headname{
-  font-family: 'Montserrat', sans-serif;
-   text-transform: uppercase;
-   color: white;
-   padding-bottom: 25px;
-   font-size: 50px;
-   position: absolute;
-   margin-top: 10%;
-   left: 50%;
-   transform: translate(-50%, -50%)
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+  color: #f6f1e8;
+  padding-bottom: 25px;
+  font-size: 46px;
+  position: absolute;
+  margin-top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.2em;
 }
 .container-slide{
   position: relative;
   text-align: center;
-  
 }
 
 .des{
   position: absolute;
-  color: white;
-  margin-top: 62%;
+  color: rgba(246, 241, 232, 0.85);
+  margin-top: 64%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 18, 16, 0.55);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }

@@ -26,7 +26,7 @@ const Auth = () => {
 
   return (
     <div className={styles.authContainer}>
-      <h2>{isRegister ? 'Register' : 'Login'}</h2>
+      <h2 className={styles.title}>{isRegister ? 'Register' : 'Login'}</h2>
       <form onSubmit={handleAuth} className={styles.form}>
         <input
           type="email"

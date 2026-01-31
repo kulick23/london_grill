@@ -1,9 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --sage: rgb(96, 126, 107);
+  --sage-dark: rgb(61, 86, 71);
+  --ink: #1c1f1d;
+  --sand: #f5f1e9;
+  --warm: #d3c7b7;
+  --gold: #cbb58a;
+  --muted: #8c8f8a;
+  --shadow: 0 20px 60px rgba(9, 12, 10, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #282c34;
+  color: var(--ink);
+  background:
+    radial-gradient(60% 60% at 10% 0%, rgba(96, 126, 107, 0.18), transparent 55%),
+    radial-gradient(40% 40% at 90% 10%, rgba(203, 181, 138, 0.22), transparent 60%),
+    linear-gradient(180deg, #f7f2e9 0%, #ede4d8 100%);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 code {

@@ -1,146 +1,149 @@
-.coctaillll {
-  display: grid;
-  grid-template-columns: 2fr 10fr;
-}
-
-.coctail {
-  width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+.page {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 28px;
 }
 
-.coctailImage {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+.header h1 {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  color: var(--sage-dark);
 }
 
-.text {
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  color: white;
-  text-align: center;
-  margin-top: 15px;
-  font-size: 45px;
-}
-
-.amount2 {
-  float: left;
-  width: 50%;
-}
-
-.amount {
-  text-align: right;
-}
-
-.quantity {
-  display: flex;
-  align-items: center;
-}
-
-.quantity button {
-  margin: 0 5px;
-}
-
-.removeButton {
-  text-decoration: none;
-  color: white;
-  display: inline-block;
-  position: relative;
-  border: 1px solid;
-  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
-  border-image-slice: 1;
-  margin: 20px 5px;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .8s cubic-bezier(.165, .84, .44, 1);
-  background: #282c34;
-}
-
-.removeButton:before {
-  content: '';
-  position: absolute;
-  background: #ff14bd;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  transform: perspective(1em) rotateX(40deg) scale(1, 0.3);
-  filter: blur(1em);
-  bottom: -2em;
-  opacity: 0.7;
-}
-
-.removeButton:hover:before {
-  opacity: 1;
-}
-
-.removeButton:hover {
-  background: #f11616;
-  color: #fff;
-  box-shadow: 0 0 2em 0.5em #f55555;
+.header p {
+  margin: 6px 0 0;
+  color: var(--muted);
 }
 
 .dialogsItems {
-  padding: 10px;
-  color: aliceblue;
+  display: grid;
+  gap: 18px;
 }
 
-.dialogsItems .active {
-  color: gold;
+.coctail {
+  display: grid;
+  grid-template-columns: 72px 1fr auto auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(96, 126, 107, 0.16);
+  box-shadow: 0 12px 28px rgba(15, 18, 16, 0.08);
 }
 
-.messages {
-  padding: 10px;
+.coctailImage {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
-.messages .message {
-  color: aliceblue;
+.amount2 {
+  font-weight: 600;
+  color: #1f2621;
 }
 
+.amount {
+  font-weight: 700;
+  color: #2c3a32;
+}
+
+.quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(96, 126, 107, 0.12);
+}
+
+.quantity button {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--sage-dark);
+}
+
+.removeButton {
+  border: 1px solid rgba(96, 126, 107, 0.2);
+  background: transparent;
+  color: var(--sage-dark);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.removeButton:hover {
+  background: rgba(96, 126, 107, 0.15);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: 10px;
+}
 
 .orderButton {
-  text-decoration: none;
-  display: inline-block;
-  margin: 10px 20px;
-  padding: 10px 30px;
-  position: relative;
-  border: 2px solid;
-  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  border-image-slice: 1;
-  transition: .4s;
-  margin-left: 40px;
-  background-color: #34353a;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgb(96, 126, 107);
+  color: #f6f1e8;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.orderButton:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  border: 2px solid rgba(0, 0, 0, 0);
-  transition: .4s;
+.orderButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.orderButton:hover:after {
-  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
-  border-image-slice: 1;
-  width: calc(100% - 10px);
-  height: calc(100% + 10px);
+.orderButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(96, 126, 107, 0.3);
 }
 
+.orderButtonSecondary {
+  border: 1px solid rgba(96, 126, 107, 0.35);
+  border-radius: 999px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--sage-dark);
+  cursor: pointer;
+}
 
 .emptyText {
   text-align: center;
-  color: white;
-  font-size: 24px;
-  margin-top: 20px;
+  color: var(--muted);
+  font-size: 18px;
+  padding: 40px 0;
+}
+
+@media (max-width: 900px) {
+  .coctail {
+    grid-template-columns: 64px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .amount,
+  .quantity,
+  .removeButton {
+    grid-column: 2 / -1;
+  }
 }

@@ -3,58 +3,40 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  color: white;
-  margin-top: 5%;
+  min-height: 70vh;
+  color: #1f2621;
+  gap: 12px;
 }
 
 .name {
-  margin-top: 10px;
+  margin: 0;
   text-align: center;
-  color: white;
-  font-size: 40px;
+  color: var(--sage-dark);
+  font-size: 36px;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .profile_type {
   text-align: center;
-  color: white;
-  font-size: 15px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 
 .logoutButton {
-  text-decoration: none;
-  display: inline-block;
-  margin: 10px 20px;
-  padding: 10px 30px;
-  position: relative;
-  border: 2px solid;
-  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  border-image-slice: 1;
-  transition: .4s;
-  margin-left: 40px;
-  background-color: #34353a;
+  margin-top: 14px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 126, 107, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--sage-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.logoutButton:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  border: 2px solid rgba(0, 0, 0, 0);
-  transition: .4s;
-}
-
-.logoutButton:hover:after {
-  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
-  border-image-slice: 1;
-  width: calc(100% - 10px);
-  height: calc(100% + 10px);
+.logoutButton:hover {
+  background: rgba(96, 126, 107, 0.12);
 }

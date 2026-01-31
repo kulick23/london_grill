@@ -41,17 +41,22 @@ const Order = observer(() => {
   ));
 
   return (
-    <div>
-      <div className={s.text}>Your order:</div>
+    <div className={s.page}>
+      <div className={s.header}>
+        <h1>Your order</h1>
+        <p>Review your selection and choose a table before placing the order.</p>
+      </div>
       {orderStore.orders.length > 0 ? (
         <div className={s.dialogsItems}>
           {coctailElements}
-          <Dropdown setSelectedTable={setSelectedTable} />
-          <button onClick={handleOrder} className={s.orderButton} disabled={!selectedTable}>Order</button>
-          <button onClick={() => orderStore.clearOrders()} className={s.orderButton}>Delete order</button>
+          <div className={s.actions}>
+            <Dropdown setSelectedTable={setSelectedTable} />
+            <button onClick={handleOrder} className={s.orderButton} disabled={!selectedTable}>Place order</button>
+            <button onClick={() => orderStore.clearOrders()} className={s.orderButtonSecondary}>Clear order</button>
+          </div>
         </div>
       ) : (
-        <div className={s.emptyText}>Empty</div>
+        <div className={s.emptyText}>Your cart is empty</div>
       )}
     </div>
   );

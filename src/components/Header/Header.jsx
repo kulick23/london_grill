@@ -6,12 +6,18 @@ import logo from '../../assets/Logo/Logo.png'
 const Header = () => {
     return (
         <nav className={s.nav}>
-            <img className={s.logo} src={logo} />
-            <div className={s.margin}>
-                <NavLink to="/profile" className={s.neon}> Profile</NavLink>
-                <NavLink to="/orders" className={s.neon}> Orders</NavLink>
-                <NavLink to="/menu" className={s.neon}> Menu</NavLink>
-                <NavLink to="/party" className={s.neon}> Partys</NavLink>
+            <div className={s.brand}>
+                <img className={s.logo} src={logo} alt="Bar logo" />
+                <div className={s.brandText}>
+                    <span className={s.brandName}>London Bar</span>
+                    <span className={s.brandTag}>Grill & Bar</span>
+                </div>
+            </div>
+            <div className={s.links}>
+                <NavLink to="/profile" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Profile</NavLink>
+                <NavLink to="/orders" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Orders</NavLink>
+                <NavLink to="/menu" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Menu</NavLink>
+                <NavLink to="/party" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Party</NavLink>
             </div>
         </nav>
 
