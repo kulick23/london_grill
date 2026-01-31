@@ -17,31 +17,36 @@ class SliderStore {
       id: 1,
       img: Promo1,
       title: "Monday & Tuesday",
-      subtitle: "20% off on all menu"
+      subtitle: "20% off on all menu",
+      days: [1, 2]
     },
     {
       id: 2,
       img: Promo2,
       title: "Wednesday",
-      subtitle: "1+1 on tinctures"
+      subtitle: "1+1 on tinctures",
+      days: [3]
     },
     {
       id: 3,
       img: Promo3,
       title: "Thursday",
-      subtitle: "1+1 on cocktails"
+      subtitle: "1+1 on cocktails",
+      days: [4]
     },
     {
       id: 4,
       img: Promo4,
       title: "Friday & Saturday",
-      subtitle: "4+1 on tinctures"
+      subtitle: "4+1 on tinctures",
+      days: [5, 6]
     },
     {
       id: 5,
       img: Promo5,
       title: "Sunday",
-      subtitle: "5+5 on tinctures"
+      subtitle: "5+5 on tinctures",
+      days: [0]
     }
   ];
 

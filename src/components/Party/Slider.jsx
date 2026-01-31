@@ -54,6 +54,9 @@ const Slider = observer(() => {
     setPromoIndex((prev) => (prev - 1 + currentPromos.length) % currentPromos.length);
   };
 
+  const todayIndex = new Date().getDay();
+  const isActiveToday = activePromo?.days?.includes(todayIndex);
+
   return (
     <div className="events-page">
       <section className="events-hero">
@@ -86,7 +89,7 @@ const Slider = observer(() => {
                 </div>
               </div>
               <div className="promo-card__content">
-                <span className="event-card__tag">Now</span>
+                {isActiveToday ? <span className="event-card__tag">Now</span> : null}
                 <h3>{activePromo.title}</h3>
                 <p>{activePromo.subtitle}</p>
               </div>
