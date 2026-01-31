@@ -1,59 +1,154 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './Slider.css';
-import BtnSlider from './BtnSlider';
-import Slide from './Slide';
 import { observer } from 'mobx-react-lite';
 import sliderStore from '../../store/SliderStore';
 
+const formatDate = (value) => {
+  const date = new Date(value);
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+};
+
+const getStatus = (startDate, endDate) => {
+  const today = new Date();
+  const start = new Date(startDate);
+  const end = endDate ? new Date(endDate) : new Date(startDate);
+  const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  const currentDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+  if (currentDay >= startDay && currentDay <= endDay) return 'current';
+  if (currentDay < startDay) return 'upcoming';
+  return 'past';
+};
+
 const Slider = observer(() => {
-  const slides = sliderStore.slides;
-  const [slideIndex, setSlideIndex] = useState(1);
+  const events = sliderStore.events;
+  const [promoIndex, setPromoIndex] = useState(0);
 
-  const nextSlide = () => {
-    if (slideIndex !== slides.length) {
-      setSlideIndex(slideIndex + 1);
-    } else if (slideIndex === slides.length) {
-      setSlideIndex(1);
-    }
+  const grouped = useMemo(() => {
+    return events.reduce(
+      (acc, event) => {
+        const status = getStatus(event.startDate, event.endDate);
+        acc[status].push(event);
+        return acc;
+      },
+      { current: [], upcoming: [], past: [] }
+    );
+  }, [events]);
+
+  const currentPromos = grouped.current;
+  const activePromo = currentPromos[promoIndex] || null;
+
+  const nextPromo = () => {
+    if (!currentPromos.length) return;
+    setPromoIndex((prev) => (prev + 1) % currentPromos.length);
   };
 
-  const prevSlide = () => {
-    if (slideIndex !== 1) {
-      setSlideIndex(slideIndex - 1);
-    } else if (slideIndex === 1) {
-      setSlideIndex(slides.length);
-    }
-  };
-
-  const moveDot = (index) => {
-    setSlideIndex(index);
+  const prevPromo = () => {
+    if (!currentPromos.length) return;
+    setPromoIndex((prev) => (prev - 1 + currentPromos.length) % currentPromos.length);
   };
 
   return (
-    <div>
-      <div className="container-slider">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={slideIndex === index + 1 ? "slide active-anim" : "slide"}
-          >
-            <Slide img={slide.img} name={slide.name} des={slide.des} />
+    <div className="events-page">
+      <section className="events-hero">
+        <div className="events-hero__content">
+          <p className="events-hero__eyebrow">Events & Promotions</p>
+          <h1>Live nights, seasonal offers, and curated experiences.</h1>
+          <p>
+            We host weekly tastings, live sets, and limited menus. Book a table
+            or join the next event and enjoy the new season lineup.
+          </p>
+        </div>
+      </section>
+
+      <section className="events-section">
+        <div className="events-section__header">
+          <h2>Current promotions</h2>
+          <p>Happening this week — available tonight.</p>
+        </div>
+        {activePromo ? (
+          <div className="promo-slider">
+            <button className="promo-arrow promo-arrow--left" onClick={prevPromo} aria-label="Previous promotion">
+              ‹
+            </button>
+            <article className="promo-card">
+              <img src={activePromo.img} alt={activePromo.name} />
+              <div className="promo-card__content">
+                <span className="event-card__tag">Now</span>
+                <h3>{activePromo.name}</h3>
+                <p>{activePromo.des}</p>
+                <div className="event-card__date">
+                  {formatDate(activePromo.startDate)} — {formatDate(activePromo.endDate)}
+                </div>
+              </div>
+            </article>
+            <button className="promo-arrow promo-arrow--right" onClick={nextPromo} aria-label="Next promotion">
+              ›
+            </button>
+            <div className="promo-dots">
+              {currentPromos.map((promo, index) => (
+                <button
+                  key={promo.id}
+                  className={index === promoIndex ? 'promo-dot promo-dot--active' : 'promo-dot'}
+                  onClick={() => setPromoIndex(index)}
+                  aria-label={`Go to promotion ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
-        ))}
+        ) : (
+          <div className="events-empty">No current promos today.</div>
+        )}
+      </section>
 
-        <BtnSlider moveSlide={nextSlide} direction={"next"} />
-        <BtnSlider moveSlide={prevSlide} direction={"prev"} />
-
-        <div className="container-dots">
-          {Array.from({ length: slides.length }).map((item, index) => (
-            <div
-              key={index}
-              onClick={() => moveDot(index + 1)}
-              className={slideIndex === index + 1 ? "dot active" : "dot"}
-            ></div>
+      <section className="events-section">
+        <div className="events-section__header">
+          <h2>Upcoming events</h2>
+          <p>Reserve your spot for the next evenings.</p>
+        </div>
+        <div className="events-grid">
+          {grouped.upcoming.map((event) => (
+            <article key={event.id} className="event-card">
+              <img src={event.img} alt={event.name} />
+              <div className="event-card__content">
+                <span className="event-card__tag event-card__tag--upcoming">Upcoming</span>
+                <h3>{event.name}</h3>
+                <p>{event.des}</p>
+                <div className="event-card__date">
+                  {formatDate(event.startDate)}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
-      </div>
+      </section>
+
+      <section className="events-section">
+        <div className="events-section__header">
+          <h2>Past highlights</h2>
+          <p>Some of the evenings our guests loved.</p>
+        </div>
+        <div className="events-grid">
+          {grouped.past.map((event) => (
+            <article key={event.id} className="event-card event-card--past">
+              <img src={event.img} alt={event.name} />
+              <div className="event-card__content">
+                <span className="event-card__tag event-card__tag--past">Past</span>
+                <h3>{event.name}</h3>
+                <p>{event.des}</p>
+                <div className="event-card__date">
+                  {formatDate(event.startDate)}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 });
