@@ -1,41 +1,17 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo } from 'react';
 import './Slider.css';
 import { observer } from 'mobx-react-lite';
 import sliderStore from '../../store/SliderStore';
 import { useI18n } from '../../i18n/I18nProvider';
-
-const formatDate = (value, locale) => {
-  const date = new Date(value);
-  return date.toLocaleDateString(locale, {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
-};
-
-const getStatus = (startDate, endDate) => {
-  const today = new Date();
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date(startDate);
-  const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-  const currentDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-  if (currentDay >= startDay && currentDay <= endDay) return 'current';
-  if (currentDay < startDay) return 'upcoming';
-  return 'past';
-};
+import { formatDate, getStatus } from '../../utils/date';
+import { usePromoSlider } from '../../hooks/usePromoSlider';
 
 const Slider = observer(() => {
   const events = sliderStore.events;
   const promos = sliderStore.promos;
-  const [promoIndex, setPromoIndex] = useState(0);
-  const [prevPromoIndex, setPrevPromoIndex] = useState(null);
-  const [isFading, setIsFading] = useState(false);
-  const fadeTimerRef = useRef(null);
-  const cleanupTimerRef = useRef(null);
   const { t, language } = useI18n();
   const locale = language === 'ru' ? 'ru-RU' : 'en-US';
+  const { index: promoIndex, prevIndex: prevPromoIndex, isFading, goTo, next, prev } = usePromoSlider(promos);
 
   const grouped = useMemo(() => {
     return events.reduce(
@@ -50,49 +26,6 @@ const Slider = observer(() => {
 
   const currentPromos = promos;
   const activePromo = currentPromos[promoIndex] || null;
-
-  const goToPromo = (index) => {
-    if (!currentPromos.length || index === promoIndex) return;
-    if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
-    if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
-    setPrevPromoIndex(promoIndex);
-    setPromoIndex(index);
-    setIsFading(true);
-    fadeTimerRef.current = setTimeout(() => {
-      setIsFading(false);
-    }, 16);
-    cleanupTimerRef.current = setTimeout(() => {
-      setPrevPromoIndex(null);
-    }, 650);
-  };
-
-  const nextPromo = () => {
-    if (!currentPromos.length) return;
-    const nextIndex = (promoIndex + 1) % currentPromos.length;
-    goToPromo(nextIndex);
-  };
-
-  const prevPromo = () => {
-    if (!currentPromos.length) return;
-    const nextIndex = (promoIndex - 1 + currentPromos.length) % currentPromos.length;
-    goToPromo(nextIndex);
-  };
-
-  useEffect(() => {
-    if (!currentPromos.length) return;
-    const timer = setInterval(() => {
-      const nextIndex = (promoIndex + 1) % currentPromos.length;
-      goToPromo(nextIndex);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [currentPromos.length, promoIndex]);
-
-  useEffect(() => {
-    return () => {
-      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
-      if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
-    };
-  }, []);
 
   const todayIndex = new Date().getDay();
   const isActiveToday = activePromo?.days?.includes(todayIndex);
@@ -114,7 +47,7 @@ const Slider = observer(() => {
         </div>
         {activePromo ? (
           <div className="promo-slider">
-            <button className="promo-arrow promo-arrow--left" onClick={prevPromo} aria-label="Previous promotion">
+            <button className="promo-arrow promo-arrow--left" onClick={prev} aria-label="Previous promotion">
               ‹
             </button>
             <article className="promo-card">
@@ -147,7 +80,7 @@ const Slider = observer(() => {
                 <p>{t(activePromo.subtitleKey)}</p>
               </div>
             </article>
-            <button className="promo-arrow promo-arrow--right" onClick={nextPromo} aria-label="Next promotion">
+            <button className="promo-arrow promo-arrow--right" onClick={next} aria-label="Next promotion">
               ›
             </button>
             <div className="promo-dots">
@@ -155,7 +88,7 @@ const Slider = observer(() => {
                 <button
                   key={promo.id}
                   className={index === promoIndex ? 'promo-dot promo-dot--active' : 'promo-dot'}
-                  onClick={() => goToPromo(index)}
+                  onClick={() => goTo(index)}
                   aria-label={`Go to promotion ${index + 1}`}
                 />
               ))}
