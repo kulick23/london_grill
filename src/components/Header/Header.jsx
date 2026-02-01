@@ -32,7 +32,7 @@ const Header = observer(() => {
             </NavLink>
             <div className={s.links}>
                 <NavLink to="/menu" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Menu</NavLink>
-                <NavLink to="/party" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Party</NavLink>
+                <NavLink to="/events" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Events</NavLink>
                 {user ? (
                     <NavLink to="/orders" className={s.cartButton} aria-label="Open cart">
                         {itemsCount > 0 ? <span className={s.cartBadge}>{itemsCount}</span> : null}

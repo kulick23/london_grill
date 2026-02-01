@@ -18,7 +18,7 @@ const App = (props) => {
           <Route path="/auth" element={<Auth />} />
           <Route path="/orders" element={<Order/>} />
           <Route path="/menu" element={<Menu/>} />
-          <Route path="/party" element={<Slider/>} />
+          <Route path="/events" element={<Slider/>} />
         </Routes>
       </div>
     </div>
