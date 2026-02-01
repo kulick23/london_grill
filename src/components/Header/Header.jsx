@@ -7,10 +7,12 @@ import orderStore from '../../store/OrderStore';
 import { observer } from 'mobx-react-lite';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { useI18n } from '../../i18n/I18nProvider';
 
 const Header = observer(() => {
     const itemsCount = orderStore.orders.reduce((sum, item) => sum + (item.quantity || 1), 0);
     const [user, setUser] = useState(null);
+    const { language, setLanguage, t } = useI18n();
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, (currentUser) => {
@@ -25,21 +27,27 @@ const Header = observer(() => {
                 <div className={s.brand}>
                 <img className={s.logo} src={logo} alt="Bar logo" loading="lazy" decoding="async" />
                 <div className={s.brandText}>
-                    <span className={s.brandName}>London Grill</span>
-                    <span className={s.brandTag}>Grill & Bar</span>
+                    <span className={s.brandName}>{t('brand.name')}</span>
+                    <span className={s.brandTag}>{t('brand.tagline')}</span>
                 </div>
                 </div>
             </NavLink>
             <div className={s.links}>
-                <NavLink to="/menu" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Menu</NavLink>
-                <NavLink to="/events" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>Events</NavLink>
+                <NavLink to="/menu" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>{t('nav.menu')}</NavLink>
+                <NavLink to="/events" className={({ isActive }) => `${s.link} ${isActive ? s.active : ''}`}>{t('nav.events')}</NavLink>
+                <button
+                    className={s.langButton}
+                    onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}
+                >
+                    {language.toUpperCase()}
+                </button>
                 {user ? (
                     <NavLink to="/orders" className={s.cartButton} aria-label="Open cart">
                         {itemsCount > 0 ? <span className={s.cartBadge}>{itemsCount}</span> : null}
                         <img src={cartIcon} alt="Cart" loading="lazy" decoding="async" />
                     </NavLink>
                 ) : (
-                    <NavLink to="/auth" className={s.loginButton}>Login</NavLink>
+                    <NavLink to="/auth" className={s.loginButton}>{t('nav.login')}</NavLink>
                 )}
             </div>
         </nav>

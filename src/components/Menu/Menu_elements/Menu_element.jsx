@@ -3,9 +3,11 @@ import s from './Menu_element.module.css';
 import orderStore from '../../../store/OrderStore';
 import { auth } from '../../../firebase';
 import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../../i18n/I18nProvider';
 
 const MenuElement = (props) => {
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   const addToOrder = () => {
     if (!auth.currentUser) {
@@ -31,7 +33,7 @@ const MenuElement = (props) => {
         {props.ml ? <div>{props.ml} ml</div> : null}
       </div>
       <div className={s.text2}>{props.count} $</div>
-      <button onClick={addToOrder} className={s.border}>Add</button>
+      <button onClick={addToOrder} className={s.border}>{t('menu.add')}</button>
     </div>
   );
 };

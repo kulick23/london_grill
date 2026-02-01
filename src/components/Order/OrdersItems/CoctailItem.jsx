@@ -1,8 +1,10 @@
 import React from 'react';
 import s from './../Order.module.css';
 import orderStore from '../../../store/OrderStore';
+import { useI18n } from '../../../i18n/I18nProvider';
 
 const CoctailItem = (props) => {
+  const { t } = useI18n();
   const increaseQuantity = () => {
     orderStore.increaseQuantity(props.id);
   };
@@ -25,7 +27,7 @@ const CoctailItem = (props) => {
         <span>{props.quantity}</span>
         <button onClick={increaseQuantity}>+</button>
       </div>
-      <button onClick={removeOrder} className={s.removeButton}>Delete</button>
+      <button onClick={removeOrder} className={s.removeButton}>{t('order.delete')}</button>
     
     </div>
   );

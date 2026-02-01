@@ -16,36 +16,36 @@ class SliderStore {
     {
       id: 1,
       img: Promo1,
-      title: "Monday & Tuesday",
-      subtitle: "20% off on all menu",
+      titleKey: "promos.monTueTitle",
+      subtitleKey: "promos.monTueSub",
       days: [1, 2]
     },
     {
       id: 2,
       img: Promo2,
-      title: "Wednesday",
-      subtitle: "1+1 on tinctures",
+      titleKey: "promos.wedTitle",
+      subtitleKey: "promos.wedSub",
       days: [3]
     },
     {
       id: 3,
       img: Promo5,
-      title: "Thursday",
-      subtitle: "1+1 on cocktails",
+      titleKey: "promos.thuTitle",
+      subtitleKey: "promos.thuSub",
       days: [4]
     },
     {
       id: 4,
       img: Promo4,
-      title: "Friday & Saturday",
-      subtitle: "4+1 on tinctures",
+      titleKey: "promos.friSatTitle",
+      subtitleKey: "promos.friSatSub",
       days: [5, 6]
     },
     {
       id: 5,
       img: Promo3,
-      title: "Sunday",
-      subtitle: "5+5 on tinctures",
+      titleKey: "promos.sunTitle",
+      subtitleKey: "promos.sunSub",
       days: [0]
     }
   ];
@@ -53,54 +53,54 @@ class SliderStore {
   events = [
     {
       id: 1,
-      name: "Winter Negroni Week",
+      nameKey: "eventsData.winterNegroni",
       img: Slide4,
-      des: "Signature negroni flights and bar bites",
+      descKey: "eventsData.winterNegroniDesc",
       startDate: "2026-01-29",
       endDate: "2026-02-02",
       tag: "Current"
     },
     {
       id: 2,
-      name: "Jazz & Candlelight",
+      nameKey: "eventsData.jazz",
       img: Slide5,
-      des: "Live trio, candlelit tables, late dinner set",
+      descKey: "eventsData.jazzDesc",
       startDate: "2026-02-07",
       endDate: "2026-02-07",
       tag: "Upcoming"
     },
     {
       id: 3,
-      name: "Chef's Table: Winter Menu",
+      nameKey: "eventsData.chefsTable",
       img: Slide3,
-      des: "6-course tasting with wine pairing",
+      descKey: "eventsData.chefsTableDesc",
       startDate: "2026-02-14",
       endDate: "2026-02-14",
       tag: "Upcoming"
     },
     {
       id: 4,
-      name: "Sunday Brunch Club",
+      nameKey: "eventsData.brunch",
       img: Slide6,
-      des: "Bottomless mimosas + brunch favorites",
+      descKey: "eventsData.brunchDesc",
       startDate: "2026-02-08",
       endDate: "2026-02-08",
       tag: "Upcoming"
     },
     {
       id: 5,
-      name: "Old Fashioned Night",
+      nameKey: "eventsData.oldFashioned",
       img: Slide2,
-      des: "Smoked cocktails and bourbon pairings",
+      descKey: "eventsData.oldFashionedDesc",
       startDate: "2026-01-11",
       endDate: "2026-01-11",
       tag: "Past"
     },
     {
       id: 6,
-      name: "Holiday Weekend Sessions",
+      nameKey: "eventsData.holiday",
       img: Slide4,
-      des: "DJ set + festive specials",
+      descKey: "eventsData.holidayDesc",
       startDate: "2025-12-27",
       endDate: "2025-12-28",
       tag: "Past"

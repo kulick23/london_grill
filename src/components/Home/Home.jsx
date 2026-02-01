@@ -3,30 +3,29 @@ import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 import heroImage from '../../assets/img/london.png';
 import plateImage from '../../assets/drinks/coctails/Mojito.png';
+import { useI18n } from '../../i18n/I18nProvider';
 
 const Home = () => {
+  const { t } = useI18n();
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <p className={styles.eyebrow}>Lunch & Grill</p>
+          <p className={styles.eyebrow}>{t('home.eyebrow')}</p>
           <h1 className={styles.title}>
-            Beautiful food & cocktails,
-            <span>delivered to your table.</span>
+            {t('home.titleLine1')}
+            <span>{t('home.titleLine2')}</span>
           </h1>
-          <p className={styles.subtitle}>
-            A modern restaurant with seasonal dishes, house infusions, and a signature bar program.
-            Warm atmosphere, late dinners, and curated music every night.
-          </p>
+          <p className={styles.subtitle}>{t('home.subtitle')}</p>
           <div className={styles.actions}>
-            <Link to="/menu" className={styles.primaryButton}>Explore menu</Link>
-            <Link to="/orders" className={styles.ghostButton}>Place an order</Link>
+            <Link to="/menu" className={styles.primaryButton}>{t('home.exploreMenu')}</Link>
+            <Link to="/orders" className={styles.ghostButton}>{t('home.placeOrder')}</Link>
           </div>
           <div className={styles.trustRow}>
             <div className={styles.trustBadge}>★</div>
             <div>
-              <div className={styles.trustTitle}>Guest reviews</div>
-              <div className={styles.trustSub}>4.9 out of 5 based on 1,200+ visits</div>
+              <div className={styles.trustTitle}>{t('home.reviewsTitle')}</div>
+              <div className={styles.trustSub}>{t('home.reviewsSub')}</div>
             </div>
           </div>
         </div>
@@ -43,16 +42,16 @@ const Home = () => {
 
       <section className={styles.highlights}>
         <div>
-          <h3>Seasonal menu</h3>
-          <p>Local produce, curated pairings, and chef specials every week.</p>
+          <h3>{t('home.highlights.seasonalTitle')}</h3>
+          <p>{t('home.highlights.seasonalText')}</p>
         </div>
         <div>
-          <h3>Private dining</h3>
-          <p>Intimate tables, private events, and custom tasting sets.</p>
+          <h3>{t('home.highlights.privateTitle')}</h3>
+          <p>{t('home.highlights.privateText')}</p>
         </div>
         <div>
-          <h3>Live evenings</h3>
-          <p>DJ sets, vinyl nights, and cozy ambiance after 20:00.</p>
+          <h3>{t('home.highlights.liveTitle')}</h3>
+          <p>{t('home.highlights.liveText')}</p>
         </div>
       </section>
     </div>

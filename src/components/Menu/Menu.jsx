@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import s from './Menu.module.css';
 import MenuElement from './Menu_elements/Menu_element';
 import heroImage from '../../assets/img/hall.jpg';
+import { useI18n } from '../../i18n/I18nProvider';
 
 const drinkAssets = import.meta.glob('../../assets/drinks/**/*.{png,jpg,jpeg}', {
   eager: true,
@@ -36,36 +37,37 @@ const buildItems = (sources, namePrefix, basePrice, volume) => {
 };
 
 const Menu = () => {
+  const { t, language } = useI18n();
   const categories = useMemo(() => {
     const drinkGroups = groupByFolder(drinkAssets, 'drinks');
     const foodGroups = groupByFolder(foodAssets, 'menu');
 
     const drinks = [
-      { title: 'Cocktails', items: buildItems(drinkGroups.coctails || [], 'Cocktail', 12, 180) },
-      { title: 'Tincture', items: buildItems(drinkGroups.tincture || [], 'Tincture', 6, 50) },
-      { title: 'Vine', items: buildItems(drinkGroups.vine || [], 'Vine', 20, 255) },
-      { title: 'Vodka', items: buildItems(drinkGroups.vodka || [], 'Vodka', 10, 50) },
-      { title: 'Whiskey', items: buildItems(drinkGroups.whiskey || [], 'Whiskey', 18, 100) },
-      { title: 'Cognac', items: buildItems(drinkGroups.cognac || [], 'Cognac', 26, 100) },
-      { title: 'Bear', items: buildItems(drinkGroups.bear || [], 'Bear', 6, 500) },
-      { title: 'Ciders', items: buildItems(drinkGroups.cidres || [], 'Cider', 7, 500) },
+      { title: t('menu.categories.cocktails'), items: buildItems(drinkGroups.coctails || [], t('menu.itemPrefix.cocktail'), 12, 180) },
+      { title: t('menu.categories.tincture'), items: buildItems(drinkGroups.tincture || [], t('menu.itemPrefix.tincture'), 6, 50) },
+      { title: t('menu.categories.vine'), items: buildItems(drinkGroups.vine || [], t('menu.itemPrefix.vine'), 20, 255) },
+      { title: t('menu.categories.vodka'), items: buildItems(drinkGroups.vodka || [], t('menu.itemPrefix.vodka'), 10, 50) },
+      { title: t('menu.categories.whiskey'), items: buildItems(drinkGroups.whiskey || [], t('menu.itemPrefix.whiskey'), 18, 100) },
+      { title: t('menu.categories.cognac'), items: buildItems(drinkGroups.cognac || [], t('menu.itemPrefix.cognac'), 26, 100) },
+      { title: t('menu.categories.beer'), items: buildItems(drinkGroups.bear || [], t('menu.itemPrefix.beer'), 6, 500) },
+      { title: t('menu.categories.ciders'), items: buildItems(drinkGroups.cidres || [], t('menu.itemPrefix.cider'), 7, 500) },
     ];
 
     const food = [
-      { title: 'Burgers', items: buildItems(foodGroups.burgers || [], 'Burger', 12, null) },
-      { title: 'Burger Sets', items: buildItems(foodGroups['burger-sets'] || [], 'Burger set', 16, null) },
-      { title: 'Naked Burger', items: buildItems(foodGroups['naked-burger'] || [], 'Naked burger', 11, null) },
-      { title: 'Naked Burger Sets', items: buildItems(foodGroups['naked-burger-sets'] || [], 'Naked set', 15, null) },
-      { title: 'Meals', items: buildItems(foodGroups.meals || [], 'Meal', 14, null) },
-      { title: 'Salads', items: buildItems(foodGroups.salads || [], 'Salad', 10, null) },
-      { title: 'Snacks', items: buildItems(foodGroups.snacks || [], 'Snack', 8, null) },
-      { title: 'Soups', items: buildItems(foodGroups.soups || [], 'Soup', 9, null) },
-      { title: 'Deserts', items: buildItems(foodGroups.deserts || [], 'Desert', 7, null) },
-      { title: 'Kids', items: buildItems(foodGroups.kids || [], 'Kids menu', 8, null) },
+      { title: t('menu.categories.burgers'), items: buildItems(foodGroups.burgers || [], t('menu.itemPrefix.burger'), 12, null) },
+      { title: t('menu.categories.burgerSets'), items: buildItems(foodGroups['burger-sets'] || [], t('menu.itemPrefix.burgerSet'), 16, null) },
+      { title: t('menu.categories.nakedBurger'), items: buildItems(foodGroups['naked-burger'] || [], t('menu.itemPrefix.nakedBurger'), 11, null) },
+      { title: t('menu.categories.nakedBurgerSets'), items: buildItems(foodGroups['naked-burger-sets'] || [], t('menu.itemPrefix.nakedSet'), 15, null) },
+      { title: t('menu.categories.meals'), items: buildItems(foodGroups.meals || [], t('menu.itemPrefix.meal'), 14, null) },
+      { title: t('menu.categories.salads'), items: buildItems(foodGroups.salads || [], t('menu.itemPrefix.salad'), 10, null) },
+      { title: t('menu.categories.snacks'), items: buildItems(foodGroups.snacks || [], t('menu.itemPrefix.snack'), 8, null) },
+      { title: t('menu.categories.soups'), items: buildItems(foodGroups.soups || [], t('menu.itemPrefix.soup'), 9, null) },
+      { title: t('menu.categories.deserts'), items: buildItems(foodGroups.deserts || [], t('menu.itemPrefix.desert'), 7, null) },
+      { title: t('menu.categories.kids'), items: buildItems(foodGroups.kids || [], t('menu.itemPrefix.kidsMenu'), 8, null) },
     ];
 
     return { drinks, food };
-  }, []);
+  }, [language, t]);
 
   const [activeGroup, setActiveGroup] = useState('drinks');
   const [activeDrinkCategory, setActiveDrinkCategory] = useState(0);
@@ -81,13 +83,13 @@ const Menu = () => {
         <img className={s.heroImage} src={heroImage} alt="Restaurant interior" loading="lazy" decoding="async" />
         <div className={s.heroOverlay}></div>
         <div className={s.heroContent}>
-          <p className={s.heroEyebrow}>Lunch & Dinner</p>
-          <h1 className={s.heroTitle}>Seasonal kitchen with a modern bar program</h1>
-          <p className={s.heroSubtitle}>Handcrafted cocktails, signature infusions, and a curated spirits collection.</p>
+          <p className={s.heroEyebrow}>{t('menu.heroEyebrow')}</p>
+          <h1 className={s.heroTitle}>{t('menu.heroTitle')}</h1>
+          <p className={s.heroSubtitle}>{t('menu.heroSubtitle')}</p>
           <div className={s.heroMeta}>
-            <span>12:00 — 01:00</span>
-            <span>Open daily</span>
-            <span>Minsk/Vilnius</span>
+            <span>{t('menu.heroMeta1')}</span>
+            <span>{t('menu.heroMeta2')}</span>
+            <span>{t('menu.heroMeta3')}</span>
           </div>
         </div>
       </section>
@@ -98,13 +100,13 @@ const Menu = () => {
             className={activeGroup === 'drinks' ? s.groupTabActive : s.groupTab}
             onClick={() => setActiveGroup('drinks')}
           >
-            Drinks
+            {t('menu.tabs.drinks')}
           </button>
           <button
             className={activeGroup === 'food' ? s.groupTabActive : s.groupTab}
             onClick={() => setActiveGroup('food')}
           >
-            Food
+            {t('menu.tabs.food')}
           </button>
         </div>
 

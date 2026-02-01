@@ -2,10 +2,11 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './Slider.css';
 import { observer } from 'mobx-react-lite';
 import sliderStore from '../../store/SliderStore';
+import { useI18n } from '../../i18n/I18nProvider';
 
-const formatDate = (value) => {
+const formatDate = (value, locale) => {
   const date = new Date(value);
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString(locale, {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
@@ -33,6 +34,8 @@ const Slider = observer(() => {
   const [isFading, setIsFading] = useState(false);
   const fadeTimerRef = useRef(null);
   const cleanupTimerRef = useRef(null);
+  const { t, language } = useI18n();
+  const locale = language === 'ru' ? 'ru-RU' : 'en-US';
 
   const grouped = useMemo(() => {
     return events.reduce(
@@ -98,19 +101,16 @@ const Slider = observer(() => {
     <div className="events-page">
       <section className="events-hero">
         <div className="events-hero__content">
-          <p className="events-hero__eyebrow">Events & Promotions</p>
-          <h1>Live nights, seasonal offers, and curated experiences.</h1>
-          <p>
-            We host weekly tastings, live sets, and limited menus. Book a table
-            or join the next event and enjoy the new season lineup.
-          </p>
+          <p className="events-hero__eyebrow">{t('events.heroEyebrow')}</p>
+          <h1>{t('events.heroTitle')}</h1>
+          <p>{t('events.heroSubtitle')}</p>
         </div>
       </section>
 
       <section className="events-section">
         <div className="events-section__header">
-          <h2>Current promotions</h2>
-          <p>Happening this week — available tonight.</p>
+          <h2>{t('events.currentTitle')}</h2>
+          <p>{t('events.currentSub')}</p>
         </div>
         {activePromo ? (
           <div className="promo-slider">
@@ -123,7 +123,7 @@ const Slider = observer(() => {
                   <img
                     className="promo-image promo-image--prev"
                     src={currentPromos[prevPromoIndex].img}
-                    alt={currentPromos[prevPromoIndex].title}
+                    alt={t(currentPromos[prevPromoIndex].titleKey)}
                     loading="lazy"
                     decoding="async"
                     style={{ opacity: isFading ? 1 : 0 }}
@@ -132,19 +132,19 @@ const Slider = observer(() => {
                 <img
                   className="promo-image promo-image--current"
                   src={activePromo.img}
-                  alt={activePromo.title}
+                  alt={t(activePromo.titleKey)}
                   loading="lazy"
                   decoding="async"
                 />
                 <div className="promo-card__overlay">
-                  <div className="promo-card__title">{activePromo.title}</div>
-                  <div className="promo-card__subtitle">{activePromo.subtitle}</div>
+                  <div className="promo-card__title">{t(activePromo.titleKey)}</div>
+                  <div className="promo-card__subtitle">{t(activePromo.subtitleKey)}</div>
                 </div>
               </div>
               <div className="promo-card__content">
-                {isActiveToday ? <span className="event-card__tag">Now</span> : null}
-                <h3>{activePromo.title}</h3>
-                <p>{activePromo.subtitle}</p>
+                {isActiveToday ? <span className="event-card__tag">{t('events.nowTag')}</span> : null}
+                <h3>{t(activePromo.titleKey)}</h3>
+                <p>{t(activePromo.subtitleKey)}</p>
               </div>
             </article>
             <button className="promo-arrow promo-arrow--right" onClick={nextPromo} aria-label="Next promotion">
@@ -162,25 +162,25 @@ const Slider = observer(() => {
             </div>
           </div>
         ) : (
-          <div className="events-empty">No current promos today.</div>
+          <div className="events-empty">{t('events.noCurrent')}</div>
         )}
       </section>
 
       <section className="events-section">
         <div className="events-section__header">
-          <h2>Upcoming events</h2>
-          <p>Reserve your spot for the next evenings.</p>
+          <h2>{t('events.upcomingTitle')}</h2>
+          <p>{t('events.upcomingSub')}</p>
         </div>
         <div className="events-grid">
           {grouped.upcoming.map((event) => (
             <article key={event.id} className="event-card">
-              <img src={event.img} alt={event.name} loading="lazy" decoding="async" />
+              <img src={event.img} alt={t(event.nameKey)} loading="lazy" decoding="async" />
               <div className="event-card__content">
-                <span className="event-card__tag event-card__tag--upcoming">Upcoming</span>
-                <h3>{event.name}</h3>
-                <p>{event.des}</p>
+                <span className="event-card__tag event-card__tag--upcoming">{t('events.upcomingTag')}</span>
+                <h3>{t(event.nameKey)}</h3>
+                <p>{t(event.descKey)}</p>
                 <div className="event-card__date">
-                  {formatDate(event.startDate)}
+                  {formatDate(event.startDate, locale)}
                 </div>
               </div>
             </article>
@@ -190,19 +190,19 @@ const Slider = observer(() => {
 
       <section className="events-section">
         <div className="events-section__header">
-          <h2>Past highlights</h2>
-          <p>Some of the evenings our guests loved.</p>
+          <h2>{t('events.pastTitle')}</h2>
+          <p>{t('events.pastSub')}</p>
         </div>
         <div className="events-grid">
           {grouped.past.map((event) => (
             <article key={event.id} className="event-card event-card--past">
-              <img src={event.img} alt={event.name} loading="lazy" decoding="async" />
+              <img src={event.img} alt={t(event.nameKey)} loading="lazy" decoding="async" />
               <div className="event-card__content">
-                <span className="event-card__tag event-card__tag--past">Past</span>
-                <h3>{event.name}</h3>
-                <p>{event.des}</p>
+                <span className="event-card__tag event-card__tag--past">{t('events.pastTag')}</span>
+                <h3>{t(event.nameKey)}</h3>
+                <p>{t(event.descKey)}</p>
                 <div className="event-card__date">
-                  {formatDate(event.startDate)}
+                  {formatDate(event.startDate, locale)}
                 </div>
               </div>
             </article>

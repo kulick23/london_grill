@@ -7,11 +7,13 @@ import { observer } from 'mobx-react-lite';
 import { auth } from '../../firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../i18n/I18nProvider';
 
 const Order = observer(() => {
   const [user, setUser] = useState(null);
   const [selectedTable, setSelectedTable] = useState(null);
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -35,12 +37,12 @@ const Order = observer(() => {
   };
 
   if (!user) {
-    return <div>Loading...</div>;
+    return <div>{t('order.loading')}</div>;
   }
 
   const handleOrder = () => {
     if (selectedTable && orderStore.orders.length > 0) {
-      alert('Заказ принят');
+      alert(t('order.accepted'));
       orderStore.clearOrders();
     }
   };
@@ -52,11 +54,11 @@ const Order = observer(() => {
   return (
     <div className={s.page}>
       <div className={s.header}>
-        <h1>Your order</h1>
-        <p>Review your selection and choose a table before placing the order.</p>
+        <h1>{t('order.title')}</h1>
+        <p>{t('order.subtitle')}</p>
         <div className={s.profileRow}>
-          <div className={s.profileNote}>Profile: {user.email}</div>
-          <button onClick={handleLogout} className={s.logoutButton}>Logout</button>
+          <div className={s.profileNote}>{t('order.profileLabel')}: {user.email}</div>
+          <button onClick={handleLogout} className={s.logoutButton}>{t('order.logout')}</button>
         </div>
       </div>
       {orderStore.orders.length > 0 ? (
@@ -64,12 +66,12 @@ const Order = observer(() => {
           {coctailElements}
           <div className={s.actions}>
             <Dropdown setSelectedTable={setSelectedTable} />
-            <button onClick={handleOrder} className={s.orderButton} disabled={!selectedTable}>Place order</button>
-            <button onClick={() => orderStore.clearOrders()} className={s.orderButtonSecondary}>Clear order</button>
+            <button onClick={handleOrder} className={s.orderButton} disabled={!selectedTable}>{t('order.placeOrder')}</button>
+            <button onClick={() => orderStore.clearOrders()} className={s.orderButtonSecondary}>{t('order.clearOrder')}</button>
           </div>
         </div>
       ) : (
-        <div className={s.emptyText}>Your cart is empty</div>
+        <div className={s.emptyText}>{t('order.empty')}</div>
       )}
     </div>
   );

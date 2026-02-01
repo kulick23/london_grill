@@ -112,6 +112,18 @@
     box-shadow: 0 12px 24px rgba(96, 126, 107, 0.3);
 }
 
+.langButton {
+    border: 1px solid rgba(96, 126, 107, 0.3);
+    border-radius: 999px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--sage-dark);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
 .cartBadge {
     position: absolute;
     top: -6px;
@@ -148,6 +160,9 @@
         margin-left: 0;
     }
     .loginButton {
+        margin-left: 0;
+    }
+    .langButton {
         margin-left: 0;
     }
 }

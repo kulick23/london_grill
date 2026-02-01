@@ -1,0 +1,376 @@
+const translations = {
+  en: {
+    brand: {
+      name: 'London Grill',
+      tagline: 'Grill & Bar'
+    },
+    nav: {
+      menu: 'Menu',
+      events: 'Events',
+      login: 'Login'
+    },
+    home: {
+      eyebrow: 'Lunch & Grill',
+      titleLine1: 'Beautiful food & cocktails,',
+      titleLine2: 'delivered to your table.',
+      subtitle: 'A modern restaurant with seasonal dishes, house infusions, and a signature bar program. Warm atmosphere, late dinners, and curated music every night.',
+      exploreMenu: 'Explore menu',
+      placeOrder: 'Place an order',
+      reviewsTitle: 'Guest reviews',
+      reviewsSub: '4.9 out of 5 based on 1,200+ visits',
+      highlights: {
+        seasonalTitle: 'Seasonal menu',
+        seasonalText: 'Local produce, curated pairings, and chef specials every week.',
+        privateTitle: 'Private dining',
+        privateText: 'Intimate tables, private events, and custom tasting sets.',
+        liveTitle: 'Live evenings',
+        liveText: 'DJ sets, vinyl nights, and cozy ambiance after 20:00.'
+      }
+    },
+    menu: {
+      heroEyebrow: 'Lunch & Dinner',
+      heroTitle: 'Seasonal kitchen with a modern bar program',
+      heroSubtitle: 'Handcrafted cocktails, signature infusions, and a curated spirits collection.',
+      heroMeta1: '12:00 — 01:00',
+      heroMeta2: 'Open daily',
+      heroMeta3: 'Minsk/Vilnius',
+      tabs: {
+        drinks: 'Drinks',
+        food: 'Food'
+      },
+      categories: {
+        cocktails: 'Cocktails',
+        tincture: 'Tincture',
+        vine: 'Vine',
+        vodka: 'Vodka',
+        whiskey: 'Whiskey',
+        cognac: 'Cognac',
+        beer: 'Beer',
+        ciders: 'Ciders',
+        burgers: 'Burgers',
+        burgerSets: 'Burger Sets',
+        nakedBurger: 'Naked Burger',
+        nakedBurgerSets: 'Naked Burger Sets',
+        meals: 'Meals',
+        salads: 'Salads',
+        snacks: 'Snacks',
+        soups: 'Soups',
+        deserts: 'Desserts',
+        kids: 'Kids'
+      },
+      itemPrefix: {
+        cocktail: 'Cocktail',
+        tincture: 'Tincture',
+        vine: 'Vine',
+        vodka: 'Vodka',
+        whiskey: 'Whiskey',
+        cognac: 'Cognac',
+        beer: 'Beer',
+        cider: 'Cider',
+        burger: 'Burger',
+        burgerSet: 'Burger set',
+        nakedBurger: 'Naked burger',
+        nakedSet: 'Naked set',
+        meal: 'Meal',
+        salad: 'Salad',
+        snack: 'Snack',
+        soup: 'Soup',
+        desert: 'Dessert',
+        kidsMenu: 'Kids menu'
+      },
+      add: 'Add'
+    },
+    order: {
+      title: 'Your order',
+      subtitle: 'Review your selection and choose a table before placing the order.',
+      profileLabel: 'Profile',
+      placeOrder: 'Place order',
+      clearOrder: 'Clear order',
+      empty: 'Your cart is empty',
+      accepted: 'Order accepted',
+      loading: 'Loading...',
+      logout: 'Logout',
+      delete: 'Delete'
+    },
+    auth: {
+      login: 'Login',
+      register: 'Register',
+      email: 'Email',
+      password: 'Password',
+      toggleToRegister: "Don't have an account? Register",
+      toggleToLogin: 'Already have an account? Login'
+    },
+    events: {
+      heroEyebrow: 'Events & Promotions',
+      heroTitle: 'Live nights, seasonal offers, and curated experiences.',
+      heroSubtitle: 'We host weekly tastings, live sets, and limited menus. Book a table or join the next event and enjoy the new season lineup.',
+      currentTitle: 'Current promotions',
+      currentSub: 'Happening this week — available tonight.',
+      upcomingTitle: 'Upcoming events',
+      upcomingSub: 'Reserve your spot for the next evenings.',
+      pastTitle: 'Past highlights',
+      pastSub: 'Some of the evenings our guests loved.',
+      nowTag: 'Now',
+      upcomingTag: 'Upcoming',
+      pastTag: 'Past',
+      noCurrent: 'No current promos today.'
+    },
+    promos: {
+      monTueTitle: 'Monday & Tuesday',
+      monTueSub: '20% off on all menu',
+      wedTitle: 'Wednesday',
+      wedSub: '1+1 on tinctures',
+      thuTitle: 'Thursday',
+      thuSub: '1+1 on cocktails',
+      friSatTitle: 'Friday & Saturday',
+      friSatSub: '4+1 on tinctures',
+      sunTitle: 'Sunday',
+      sunSub: '5+5 on tinctures'
+    },
+    eventsData: {
+      winterNegroni: 'Winter Negroni Week',
+      winterNegroniDesc: 'Signature negroni flights and bar bites',
+      jazz: 'Jazz & Candlelight',
+      jazzDesc: 'Live trio, candlelit tables, late dinner set',
+      chefsTable: "Chef's Table: Winter Menu",
+      chefsTableDesc: '6-course tasting with wine pairing',
+      brunch: 'Sunday Brunch Club',
+      brunchDesc: 'Bottomless mimosas + brunch favorites',
+      oldFashioned: 'Old Fashioned Night',
+      oldFashionedDesc: 'Smoked cocktails and bourbon pairings',
+      holiday: 'Holiday Weekend Sessions',
+      holidayDesc: 'DJ set + festive specials'
+    },
+    coctails: {
+      mojito: 'Mojito',
+      longIsland: 'Long Island',
+      bloodMary: 'Blood Mary',
+      sexOnTheBeach: 'Sex on the Beach',
+      cubaLibre: 'Cuba Libre',
+      pinaColada: 'Pina Colada',
+      blueLagoon: 'Blue Lagoon',
+      cosmopolitan: 'Cosmopolitan'
+    },
+    tincture: {
+      chocolate: 'Chocolate',
+      banana: 'Banana',
+      peanut: 'Peanut',
+      strawberry: 'Strawberry',
+      watermelon: 'Watermelon',
+      kiwi: 'Kiwi',
+      apple: 'Apple'
+    },
+    wine: {
+      white: 'White',
+      red: 'Red',
+      pink: 'Pink'
+    },
+    vodka: {
+      finlandia: 'Finlandia',
+      svayak: 'Svayak'
+    },
+    whiskey: {
+      jimBeam: 'Jim Beam',
+      jackDaniels: 'Jack Daniels',
+      jameson: 'Jameson'
+    },
+    cognac: {
+      hennessy: 'Hennessy'
+    },
+    beer: {
+      bud: 'Bud',
+      blanc: 'Blanc'
+    },
+    buttons: {
+      login: 'Login'
+    }
+  },
+  ru: {
+    brand: {
+      name: 'London Grill',
+      tagline: 'Grill & Bar'
+    },
+    nav: {
+      menu: 'Меню',
+      events: 'События',
+      login: 'Войти'
+    },
+    home: {
+      eyebrow: 'Ланч и гриль',
+      titleLine1: 'Красивые блюда и коктейли,',
+      titleLine2: 'подаются прямо к вашему столу.',
+      subtitle: 'Современный ресторан с сезонными блюдами, фирменными настойками и авторской барной картой. Тёплая атмосфера, поздние ужины и музыка каждый вечер.',
+      exploreMenu: 'Открыть меню',
+      placeOrder: 'Сделать заказ',
+      reviewsTitle: 'Отзывы гостей',
+      reviewsSub: '4.9 из 5 на основе 1 200+ визитов',
+      highlights: {
+        seasonalTitle: 'Сезонное меню',
+        seasonalText: 'Локальные продукты, продуманные сочетания и новые предложения каждую неделю.',
+        privateTitle: 'Частные ужины',
+        privateText: 'Интимные столы, приватные события и кастомные дегустации.',
+        liveTitle: 'Живые вечера',
+        liveText: 'DJ-сеты, виниловые ночи и уютная атмосфера после 20:00.'
+      }
+    },
+    menu: {
+      heroEyebrow: 'Ланч и ужин',
+      heroTitle: 'Сезонная кухня и современная барная программа',
+      heroSubtitle: 'Авторские коктейли, фирменные настойки и тщательно подобранные напитки.',
+      heroMeta1: '12:00 — 01:00',
+      heroMeta2: 'Открыто каждый день',
+      heroMeta3: 'Минск/Вильнюс',
+      tabs: {
+        drinks: 'Напитки',
+        food: 'Еда'
+      },
+      categories: {
+        cocktails: 'Коктейли',
+        tincture: 'Настойки',
+        vine: 'Вино',
+        vodka: 'Водка',
+        whiskey: 'Виски',
+        cognac: 'Коньяк',
+        beer: 'Пиво',
+        ciders: 'Сидры',
+        burgers: 'Бургеры',
+        burgerSets: 'Бургер-сеты',
+        nakedBurger: 'Нейкед бургер',
+        nakedBurgerSets: 'Нейкед сеты',
+        meals: 'Горячие блюда',
+        salads: 'Салаты',
+        snacks: 'Закуски',
+        soups: 'Супы',
+        deserts: 'Десерты',
+        kids: 'Детское меню'
+      },
+      itemPrefix: {
+        cocktail: 'Коктейль',
+        tincture: 'Настойка',
+        vine: 'Вино',
+        vodka: 'Водка',
+        whiskey: 'Виски',
+        cognac: 'Коньяк',
+        beer: 'Пиво',
+        cider: 'Сидр',
+        burger: 'Бургер',
+        burgerSet: 'Бургер сет',
+        nakedBurger: 'Нейкед бургер',
+        nakedSet: 'Нейкед сет',
+        meal: 'Блюдо',
+        salad: 'Салат',
+        snack: 'Закуска',
+        soup: 'Суп',
+        desert: 'Десерт',
+        kidsMenu: 'Детское меню'
+      },
+      add: 'Добавить'
+    },
+    order: {
+      title: 'Ваш заказ',
+      subtitle: 'Проверьте список и выберите стол перед подтверждением.',
+      profileLabel: 'Профиль',
+      placeOrder: 'Оформить заказ',
+      clearOrder: 'Очистить',
+      empty: 'Корзина пуста',
+      accepted: 'Заказ принят',
+      loading: 'Загрузка...',
+      logout: 'Выйти',
+      delete: 'Удалить'
+    },
+    auth: {
+      login: 'Вход',
+      register: 'Регистрация',
+      email: 'Email',
+      password: 'Пароль',
+      toggleToRegister: 'Нет аккаунта? Регистрация',
+      toggleToLogin: 'Уже есть аккаунт? Войти'
+    },
+    events: {
+      heroEyebrow: 'События и акции',
+      heroTitle: 'Вечеринки, сезонные предложения и атмосферные ужины.',
+      heroSubtitle: 'Мы проводим дегустации, живые выступления и лимитированные меню. Бронируйте стол или приходите на следующую программу.',
+      currentTitle: 'Текущие акции',
+      currentSub: 'Действуют сейчас — доступны сегодня.',
+      upcomingTitle: 'Будущие события',
+      upcomingSub: 'Забронируйте место на ближайшие вечера.',
+      pastTitle: 'Прошедшие события',
+      pastSub: 'Несколько вечеров, которые понравились гостям.',
+      nowTag: 'Сейчас',
+      upcomingTag: 'Скоро',
+      pastTag: 'Прошло',
+      noCurrent: 'Сегодня нет активных акций.'
+    },
+    promos: {
+      monTueTitle: 'Понедельник и вторник',
+      monTueSub: '20% на всё меню',
+      wedTitle: 'Среда',
+      wedSub: '1+1 на настойки',
+      thuTitle: 'Четверг',
+      thuSub: '1+1 на коктейли',
+      friSatTitle: 'Пятница и суббота',
+      friSatSub: '4+1 на настойки',
+      sunTitle: 'Воскресенье',
+      sunSub: '5+5 на настойки'
+    },
+    eventsData: {
+      winterNegroni: 'Неделя негрони',
+      winterNegroniDesc: 'Фирменные негрони и барные закуски',
+      jazz: 'Джаз и свечи',
+      jazzDesc: 'Живое трио, свечи и поздний ужин',
+      chefsTable: 'Шеф-стол: зимнее меню',
+      chefsTableDesc: '6 курсов с винным сопровождением',
+      brunch: 'Воскресный бранч',
+      brunchDesc: 'Безлимитные мимозы и бранч-хиты',
+      oldFashioned: 'Ночь Old Fashioned',
+      oldFashionedDesc: 'Копчёные коктейли и бурбон-пейринги',
+      holiday: 'Праздничный уикенд',
+      holidayDesc: 'DJ-сет и специальные предложения'
+    },
+    coctails: {
+      mojito: 'Мохито',
+      longIsland: 'Лонг Айленд',
+      bloodMary: 'Кровавая Мэри',
+      sexOnTheBeach: 'Секс на пляже',
+      cubaLibre: 'Куба Либре',
+      pinaColada: 'Пина Колада',
+      blueLagoon: 'Голубая лагуна',
+      cosmopolitan: 'Космополитен'
+    },
+    tincture: {
+      chocolate: 'Шоколад',
+      banana: 'Банан',
+      peanut: 'Арахис',
+      strawberry: 'Клубника',
+      watermelon: 'Арбуз',
+      kiwi: 'Киви',
+      apple: 'Яблоко'
+    },
+    wine: {
+      white: 'Белое',
+      red: 'Красное',
+      pink: 'Розовое'
+    },
+    vodka: {
+      finlandia: 'Финляндия',
+      svayak: 'Сваяк'
+    },
+    whiskey: {
+      jimBeam: 'Jim Beam',
+      jackDaniels: 'Jack Daniels',
+      jameson: 'Jameson'
+    },
+    cognac: {
+      hennessy: 'Hennessy'
+    },
+    beer: {
+      bud: 'Bud',
+      blanc: 'Blanc'
+    },
+    buttons: {
+      login: 'Войти'
+    }
+  }
+};
+
+export default translations;
