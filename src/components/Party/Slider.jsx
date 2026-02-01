@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './Slider.css';
 import { observer } from 'mobx-react-lite';
 import sliderStore from '../../store/SliderStore';
@@ -29,6 +29,10 @@ const Slider = observer(() => {
   const events = sliderStore.events;
   const promos = sliderStore.promos;
   const [promoIndex, setPromoIndex] = useState(0);
+  const [prevPromoIndex, setPrevPromoIndex] = useState(null);
+  const [isFading, setIsFading] = useState(false);
+  const fadeTimerRef = useRef(null);
+  const cleanupTimerRef = useRef(null);
 
   const grouped = useMemo(() => {
     return events.reduce(
@@ -44,15 +48,48 @@ const Slider = observer(() => {
   const currentPromos = promos;
   const activePromo = currentPromos[promoIndex] || null;
 
+  const goToPromo = (index) => {
+    if (!currentPromos.length || index === promoIndex) return;
+    if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+    if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
+    setPrevPromoIndex(promoIndex);
+    setPromoIndex(index);
+    setIsFading(true);
+    fadeTimerRef.current = setTimeout(() => {
+      setIsFading(false);
+    }, 16);
+    cleanupTimerRef.current = setTimeout(() => {
+      setPrevPromoIndex(null);
+    }, 650);
+  };
+
   const nextPromo = () => {
     if (!currentPromos.length) return;
-    setPromoIndex((prev) => (prev + 1) % currentPromos.length);
+    const nextIndex = (promoIndex + 1) % currentPromos.length;
+    goToPromo(nextIndex);
   };
 
   const prevPromo = () => {
     if (!currentPromos.length) return;
-    setPromoIndex((prev) => (prev - 1 + currentPromos.length) % currentPromos.length);
+    const nextIndex = (promoIndex - 1 + currentPromos.length) % currentPromos.length;
+    goToPromo(nextIndex);
   };
+
+  useEffect(() => {
+    if (!currentPromos.length) return;
+    const timer = setInterval(() => {
+      const nextIndex = (promoIndex + 1) % currentPromos.length;
+      goToPromo(nextIndex);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [currentPromos.length, promoIndex]);
+
+  useEffect(() => {
+    return () => {
+      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+      if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
+    };
+  }, []);
 
   const todayIndex = new Date().getDay();
   const isActiveToday = activePromo?.days?.includes(todayIndex);
@@ -82,7 +119,23 @@ const Slider = observer(() => {
             </button>
             <article className="promo-card">
               <div className="promo-card__media">
-                <img src={activePromo.img} alt={activePromo.title} loading="lazy" decoding="async" />
+                {prevPromoIndex !== null ? (
+                  <img
+                    className="promo-image promo-image--prev"
+                    src={currentPromos[prevPromoIndex].img}
+                    alt={currentPromos[prevPromoIndex].title}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ opacity: isFading ? 1 : 0 }}
+                  />
+                ) : null}
+                <img
+                  className="promo-image promo-image--current"
+                  src={activePromo.img}
+                  alt={activePromo.title}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div className="promo-card__overlay">
                   <div className="promo-card__title">{activePromo.title}</div>
                   <div className="promo-card__subtitle">{activePromo.subtitle}</div>
@@ -102,7 +155,7 @@ const Slider = observer(() => {
                 <button
                   key={promo.id}
                   className={index === promoIndex ? 'promo-dot promo-dot--active' : 'promo-dot'}
-                  onClick={() => setPromoIndex(index)}
+                  onClick={() => goToPromo(index)}
                   aria-label={`Go to promotion ${index + 1}`}
                 />
               ))}

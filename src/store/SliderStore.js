@@ -29,7 +29,7 @@ class SliderStore {
     },
     {
       id: 3,
-      img: Promo3,
+      img: Promo5,
       title: "Thursday",
       subtitle: "1+1 on cocktails",
       days: [4]
@@ -43,7 +43,7 @@ class SliderStore {
     },
     {
       id: 5,
-      img: Promo5,
+      img: Promo3,
       title: "Sunday",
       subtitle: "5+5 on tinctures",
       days: [0]
