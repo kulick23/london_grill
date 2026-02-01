@@ -50,65 +50,91 @@ class SliderStore {
     },
   ];
 
-  events = [
-    {
-      id: 1,
-      nameKey: 'eventsData.winterNegroni',
-      img: Slide4,
-      descKey: 'eventsData.winterNegroniDesc',
-      startDate: '2026-01-29',
-      endDate: '2026-02-02',
-      tag: 'Current',
-    },
-    {
-      id: 2,
-      nameKey: 'eventsData.jazz',
-      img: Slide5,
-      descKey: 'eventsData.jazzDesc',
-      startDate: '2026-02-07',
-      endDate: '2026-02-07',
-      tag: 'Upcoming',
-    },
-    {
-      id: 3,
-      nameKey: 'eventsData.chefsTable',
-      img: Slide3,
-      descKey: 'eventsData.chefsTableDesc',
-      startDate: '2026-02-14',
-      endDate: '2026-02-14',
-      tag: 'Upcoming',
-    },
-    {
-      id: 4,
-      nameKey: 'eventsData.brunch',
-      img: Slide6,
-      descKey: 'eventsData.brunchDesc',
-      startDate: '2026-02-08',
-      endDate: '2026-02-08',
-      tag: 'Upcoming',
-    },
-    {
-      id: 5,
-      nameKey: 'eventsData.oldFashioned',
-      img: Slide2,
-      descKey: 'eventsData.oldFashionedDesc',
-      startDate: '2026-01-11',
-      endDate: '2026-01-11',
-      tag: 'Past',
-    },
-    {
-      id: 6,
-      nameKey: 'eventsData.holiday',
-      img: Slide4,
-      descKey: 'eventsData.holidayDesc',
-      startDate: '2025-12-27',
-      endDate: '2025-12-28',
-      tag: 'Past',
-    },
-  ];
+  events = [];
 
   constructor() {
     makeAutoObservable(this);
+    this.events = this.buildEvents();
+  }
+
+  buildEvents() {
+    const today = new Date();
+    const toISO = (date) => date.toISOString().slice(0, 10);
+    const addDays = (date, days) =>
+      new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
+    const getNextWeekday = (weekday) => {
+      const diff = (weekday - today.getDay() + 7) % 7 || 7;
+      return addDays(today, diff);
+    };
+    const getPreviousWeekday = (weekday) => {
+      const diff = (today.getDay() - weekday + 7) % 7 || 7;
+      return addDays(today, -diff);
+    };
+
+    const currentStart = addDays(today, -1);
+    const currentEnd = addDays(today, 3);
+    const nextSaturday = getNextWeekday(6);
+    const nextSunday = getNextWeekday(0);
+    const nextFriday = getNextWeekday(5);
+    const prevSaturday = getPreviousWeekday(6);
+    const prevFriday = getPreviousWeekday(5);
+
+    return [
+      {
+        id: 1,
+        nameKey: 'eventsData.winterNegroni',
+        img: Slide4,
+        descKey: 'eventsData.winterNegroniDesc',
+        startDate: toISO(currentStart),
+        endDate: toISO(currentEnd),
+        tag: 'Current',
+      },
+      {
+        id: 2,
+        nameKey: 'eventsData.jazz',
+        img: Slide5,
+        descKey: 'eventsData.jazzDesc',
+        startDate: toISO(nextSaturday),
+        endDate: toISO(nextSaturday),
+        tag: 'Upcoming',
+      },
+      {
+        id: 3,
+        nameKey: 'eventsData.chefsTable',
+        img: Slide3,
+        descKey: 'eventsData.chefsTableDesc',
+        startDate: toISO(addDays(nextSaturday, 7)),
+        endDate: toISO(addDays(nextSaturday, 7)),
+        tag: 'Upcoming',
+      },
+      {
+        id: 4,
+        nameKey: 'eventsData.brunch',
+        img: Slide6,
+        descKey: 'eventsData.brunchDesc',
+        startDate: toISO(nextSunday),
+        endDate: toISO(nextSunday),
+        tag: 'Upcoming',
+      },
+      {
+        id: 5,
+        nameKey: 'eventsData.oldFashioned',
+        img: Slide2,
+        descKey: 'eventsData.oldFashionedDesc',
+        startDate: toISO(prevFriday),
+        endDate: toISO(prevFriday),
+        tag: 'Past',
+      },
+      {
+        id: 6,
+        nameKey: 'eventsData.holiday',
+        img: Slide4,
+        descKey: 'eventsData.holidayDesc',
+        startDate: toISO(prevSaturday),
+        endDate: toISO(addDays(prevSaturday, 1)),
+        tag: 'Past',
+      },
+    ];
   }
 }
 
