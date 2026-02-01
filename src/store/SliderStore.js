@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import Slide1 from '../assets/Party/Tuesday.jpg';
-import Slide2 from '../assets/Party/Wednesday.jpg';
-import Slide3 from '../assets/Party/Thursday.jpg';
-import Slide4 from '../assets/Party/Friday.jpg';
-import Slide5 from '../assets/Party/Saturday.jpg';
-import Slide6 from '../assets/Party/Sunday.jpg';
+import Slide1 from '../assets/events/event1.jpg';
+import Slide2 from '../assets/events/event2.png';
+import Slide3 from '../assets/events/event3.jpg';
+import Slide4 from '../assets/events/event4.png';
+import Slide5 from '../assets/events/event5.webp';
+const Slide6 = Slide1;
 import Promo1 from '../assets/promo/IMG_2934_resized-min-884x590.jpg';
 import Promo2 from '../assets/promo/DSC_6923.jpg';
 import Promo3 from '../assets/promo/Настойки_74_resized-885x590.jpg';
@@ -99,7 +99,7 @@ class SliderStore {
     {
       id: 6,
       name: "Holiday Weekend Sessions",
-      img: Slide1,
+      img: Slide4,
       des: "DJ set + festive specials",
       startDate: "2025-12-27",
       endDate: "2025-12-28",
