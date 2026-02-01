@@ -19,7 +19,7 @@ const MenuElement = (props) => {
       name: props.name,
       price: props.count,
       volume: props.ml,
-      image: props.img
+      image: props.img,
     });
   };
 
@@ -33,7 +33,9 @@ const MenuElement = (props) => {
         {props.ml ? <div>{props.ml} ml</div> : null}
       </div>
       <div className={s.text2}>{props.count} $</div>
-      <button onClick={addToOrder} className={s.border}>{t('menu.add')}</button>
+      <button onClick={addToOrder} className={s.border}>
+        {t('menu.add')}
+      </button>
     </div>
   );
 };

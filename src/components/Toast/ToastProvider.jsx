@@ -12,11 +12,14 @@ export const ToastProvider = ({ children }) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
   }, []);
 
-  const showToast = useCallback((message, variant = 'info') => {
-    const id = `${Date.now()}-${Math.random()}`;
-    setToasts((prev) => [...prev, { id, message, variant }]);
-    setTimeout(() => removeToast(id), TOAST_DURATION);
-  }, [removeToast]);
+  const showToast = useCallback(
+    (message, variant = 'info') => {
+      const id = `${Date.now()}-${Math.random()}`;
+      setToasts((prev) => [...prev, { id, message, variant }]);
+      setTimeout(() => removeToast(id), TOAST_DURATION);
+    },
+    [removeToast],
+  );
 
   const value = useMemo(() => ({ showToast }), [showToast]);
 

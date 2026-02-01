@@ -11,7 +11,14 @@ const Slider = observer(() => {
   const promos = sliderStore.promos;
   const { t, language } = useI18n();
   const locale = language === 'ru' ? 'ru-RU' : 'en-US';
-  const { index: promoIndex, prevIndex: prevPromoIndex, isFading, goTo, next, prev } = usePromoSlider(promos);
+  const {
+    index: promoIndex,
+    prevIndex: prevPromoIndex,
+    isFading,
+    goTo,
+    next,
+    prev,
+  } = usePromoSlider(promos);
 
   const grouped = useMemo(() => {
     return events.reduce(
@@ -20,7 +27,7 @@ const Slider = observer(() => {
         acc[status].push(event);
         return acc;
       },
-      { current: [], upcoming: [], past: [] }
+      { current: [], upcoming: [], past: [] },
     );
   }, [events]);
 
@@ -47,7 +54,11 @@ const Slider = observer(() => {
         </div>
         {activePromo ? (
           <div className="promo-slider">
-            <button className="promo-arrow promo-arrow--left" onClick={prev} aria-label="Previous promotion">
+            <button
+              className="promo-arrow promo-arrow--left"
+              onClick={prev}
+              aria-label="Previous promotion"
+            >
               ‹
             </button>
             <article className="promo-card">
@@ -75,12 +86,18 @@ const Slider = observer(() => {
                 </div>
               </div>
               <div className="promo-card__content">
-                {isActiveToday ? <span className="event-card__tag">{t('events.nowTag')}</span> : null}
+                {isActiveToday ? (
+                  <span className="event-card__tag">{t('events.nowTag')}</span>
+                ) : null}
                 <h3>{t(activePromo.titleKey)}</h3>
                 <p>{t(activePromo.subtitleKey)}</p>
               </div>
             </article>
-            <button className="promo-arrow promo-arrow--right" onClick={next} aria-label="Next promotion">
+            <button
+              className="promo-arrow promo-arrow--right"
+              onClick={next}
+              aria-label="Next promotion"
+            >
               ›
             </button>
             <div className="promo-dots">
@@ -109,12 +126,12 @@ const Slider = observer(() => {
             <article key={event.id} className="event-card">
               <img src={event.img} alt={t(event.nameKey)} loading="lazy" decoding="async" />
               <div className="event-card__content">
-                <span className="event-card__tag event-card__tag--upcoming">{t('events.upcomingTag')}</span>
+                <span className="event-card__tag event-card__tag--upcoming">
+                  {t('events.upcomingTag')}
+                </span>
                 <h3>{t(event.nameKey)}</h3>
                 <p>{t(event.descKey)}</p>
-                <div className="event-card__date">
-                  {formatDate(event.startDate, locale)}
-                </div>
+                <div className="event-card__date">{formatDate(event.startDate, locale)}</div>
               </div>
             </article>
           ))}
@@ -134,9 +151,7 @@ const Slider = observer(() => {
                 <span className="event-card__tag event-card__tag--past">{t('events.pastTag')}</span>
                 <h3>{t(event.nameKey)}</h3>
                 <p>{t(event.descKey)}</p>
-                <div className="event-card__date">
-                  {formatDate(event.startDate, locale)}
-                </div>
+                <div className="event-card__date">{formatDate(event.startDate, locale)}</div>
               </div>
             </article>
           ))}

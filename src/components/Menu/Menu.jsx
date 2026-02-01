@@ -43,27 +43,96 @@ const Menu = () => {
     const foodGroups = groupByFolder(foodAssets, 'menu');
 
     const drinks = [
-      { title: t('menu.categories.cocktails'), items: buildItems(drinkGroups.coctails || [], t('menu.itemPrefix.cocktail'), 12, 180) },
-      { title: t('menu.categories.tincture'), items: buildItems(drinkGroups.tincture || [], t('menu.itemPrefix.tincture'), 6, 50) },
-      { title: t('menu.categories.vine'), items: buildItems(drinkGroups.vine || [], t('menu.itemPrefix.vine'), 20, 255) },
-      { title: t('menu.categories.vodka'), items: buildItems(drinkGroups.vodka || [], t('menu.itemPrefix.vodka'), 10, 50) },
-      { title: t('menu.categories.whiskey'), items: buildItems(drinkGroups.whiskey || [], t('menu.itemPrefix.whiskey'), 18, 100) },
-      { title: t('menu.categories.cognac'), items: buildItems(drinkGroups.cognac || [], t('menu.itemPrefix.cognac'), 26, 100) },
-      { title: t('menu.categories.beer'), items: buildItems(drinkGroups.bear || [], t('menu.itemPrefix.beer'), 6, 500) },
-      { title: t('menu.categories.ciders'), items: buildItems(drinkGroups.cidres || [], t('menu.itemPrefix.cider'), 7, 500) },
+      {
+        title: t('menu.categories.cocktails'),
+        items: buildItems(drinkGroups.coctails || [], t('menu.itemPrefix.cocktail'), 12, 180),
+      },
+      {
+        title: t('menu.categories.tincture'),
+        items: buildItems(drinkGroups.tincture || [], t('menu.itemPrefix.tincture'), 6, 50),
+      },
+      {
+        title: t('menu.categories.vine'),
+        items: buildItems(drinkGroups.vine || [], t('menu.itemPrefix.vine'), 20, 255),
+      },
+      {
+        title: t('menu.categories.vodka'),
+        items: buildItems(drinkGroups.vodka || [], t('menu.itemPrefix.vodka'), 10, 50),
+      },
+      {
+        title: t('menu.categories.whiskey'),
+        items: buildItems(drinkGroups.whiskey || [], t('menu.itemPrefix.whiskey'), 18, 100),
+      },
+      {
+        title: t('menu.categories.cognac'),
+        items: buildItems(drinkGroups.cognac || [], t('menu.itemPrefix.cognac'), 26, 100),
+      },
+      {
+        title: t('menu.categories.beer'),
+        items: buildItems(drinkGroups.bear || [], t('menu.itemPrefix.beer'), 6, 500),
+      },
+      {
+        title: t('menu.categories.ciders'),
+        items: buildItems(drinkGroups.cidres || [], t('menu.itemPrefix.cider'), 7, 500),
+      },
     ];
 
     const food = [
-      { title: t('menu.categories.burgers'), items: buildItems(foodGroups.burgers || [], t('menu.itemPrefix.burger'), 12, null) },
-      { title: t('menu.categories.burgerSets'), items: buildItems(foodGroups['burger-sets'] || [], t('menu.itemPrefix.burgerSet'), 16, null) },
-      { title: t('menu.categories.nakedBurger'), items: buildItems(foodGroups['naked-burger'] || [], t('menu.itemPrefix.nakedBurger'), 11, null) },
-      { title: t('menu.categories.nakedBurgerSets'), items: buildItems(foodGroups['naked-burger-sets'] || [], t('menu.itemPrefix.nakedSet'), 15, null) },
-      { title: t('menu.categories.meals'), items: buildItems(foodGroups.meals || [], t('menu.itemPrefix.meal'), 14, null) },
-      { title: t('menu.categories.salads'), items: buildItems(foodGroups.salads || [], t('menu.itemPrefix.salad'), 10, null) },
-      { title: t('menu.categories.snacks'), items: buildItems(foodGroups.snacks || [], t('menu.itemPrefix.snack'), 8, null) },
-      { title: t('menu.categories.soups'), items: buildItems(foodGroups.soups || [], t('menu.itemPrefix.soup'), 9, null) },
-      { title: t('menu.categories.deserts'), items: buildItems(foodGroups.deserts || [], t('menu.itemPrefix.desert'), 7, null) },
-      { title: t('menu.categories.kids'), items: buildItems(foodGroups.kids || [], t('menu.itemPrefix.kidsMenu'), 8, null) },
+      {
+        title: t('menu.categories.burgers'),
+        items: buildItems(foodGroups.burgers || [], t('menu.itemPrefix.burger'), 12, null),
+      },
+      {
+        title: t('menu.categories.burgerSets'),
+        items: buildItems(
+          foodGroups['burger-sets'] || [],
+          t('menu.itemPrefix.burgerSet'),
+          16,
+          null,
+        ),
+      },
+      {
+        title: t('menu.categories.nakedBurger'),
+        items: buildItems(
+          foodGroups['naked-burger'] || [],
+          t('menu.itemPrefix.nakedBurger'),
+          11,
+          null,
+        ),
+      },
+      {
+        title: t('menu.categories.nakedBurgerSets'),
+        items: buildItems(
+          foodGroups['naked-burger-sets'] || [],
+          t('menu.itemPrefix.nakedSet'),
+          15,
+          null,
+        ),
+      },
+      {
+        title: t('menu.categories.meals'),
+        items: buildItems(foodGroups.meals || [], t('menu.itemPrefix.meal'), 14, null),
+      },
+      {
+        title: t('menu.categories.salads'),
+        items: buildItems(foodGroups.salads || [], t('menu.itemPrefix.salad'), 10, null),
+      },
+      {
+        title: t('menu.categories.snacks'),
+        items: buildItems(foodGroups.snacks || [], t('menu.itemPrefix.snack'), 8, null),
+      },
+      {
+        title: t('menu.categories.soups'),
+        items: buildItems(foodGroups.soups || [], t('menu.itemPrefix.soup'), 9, null),
+      },
+      {
+        title: t('menu.categories.deserts'),
+        items: buildItems(foodGroups.deserts || [], t('menu.itemPrefix.desert'), 7, null),
+      },
+      {
+        title: t('menu.categories.kids'),
+        items: buildItems(foodGroups.kids || [], t('menu.itemPrefix.kidsMenu'), 8, null),
+      },
     ];
 
     return { drinks, food };
@@ -80,7 +149,13 @@ const Menu = () => {
   return (
     <div className={s.page}>
       <section className={s.hero}>
-        <img className={s.heroImage} src={heroImage} alt="Restaurant interior" loading="lazy" decoding="async" />
+        <img
+          className={s.heroImage}
+          src={heroImage}
+          alt="Restaurant interior"
+          loading="lazy"
+          decoding="async"
+        />
         <div className={s.heroOverlay}></div>
         <div className={s.heroContent}>
           <p className={s.heroEyebrow}>{t('menu.heroEyebrow')}</p>

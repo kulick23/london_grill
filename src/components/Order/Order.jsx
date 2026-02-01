@@ -5,7 +5,7 @@ import Dropdown from './Dropdown';
 import orderStore from '../../store/OrderStore';
 import { observer } from 'mobx-react-lite';
 import { auth } from '../../firebase';
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../i18n/I18nProvider';
 import { useToast } from '../Toast/ToastProvider';
@@ -50,7 +50,14 @@ const Order = observer(() => {
   };
 
   const coctailElements = orderStore.orders.map((d, index) => (
-    <CoctailItem key={index} name={d.name} id={d.id} price={d.price} img={d.image} quantity={d.quantity} />
+    <CoctailItem
+      key={index}
+      name={d.name}
+      id={d.id}
+      price={d.price}
+      img={d.image}
+      quantity={d.quantity}
+    />
   ));
 
   return (
@@ -59,8 +66,12 @@ const Order = observer(() => {
         <h1>{t('order.title')}</h1>
         <p>{t('order.subtitle')}</p>
         <div className={s.profileRow}>
-          <div className={s.profileNote}>{t('order.profileLabel')}: {user.email}</div>
-          <button onClick={handleLogout} className={s.logoutButton}>{t('order.logout')}</button>
+          <div className={s.profileNote}>
+            {t('order.profileLabel')}: {user.email}
+          </div>
+          <button onClick={handleLogout} className={s.logoutButton}>
+            {t('order.logout')}
+          </button>
         </div>
       </div>
       {orderStore.orders.length > 0 ? (
@@ -68,8 +79,12 @@ const Order = observer(() => {
           {coctailElements}
           <div className={s.actions}>
             <Dropdown setSelectedTable={setSelectedTable} />
-            <button onClick={handleOrder} className={s.orderButton} disabled={!selectedTable}>{t('order.placeOrder')}</button>
-            <button onClick={() => orderStore.clearOrders()} className={s.orderButtonSecondary}>{t('order.clearOrder')}</button>
+            <button onClick={handleOrder} className={s.orderButton} disabled={!selectedTable}>
+              {t('order.placeOrder')}
+            </button>
+            <button onClick={() => orderStore.clearOrders()} className={s.orderButtonSecondary}>
+              {t('order.clearOrder')}
+            </button>
           </div>
         </div>
       ) : (

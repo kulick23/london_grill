@@ -2,18 +2,19 @@ const translations = {
   en: {
     brand: {
       name: 'London Grill',
-      tagline: 'Grill & Bar'
+      tagline: 'Grill & Bar',
     },
     nav: {
       menu: 'Menu',
       events: 'Events',
-      login: 'Login'
+      login: 'Login',
     },
     home: {
       eyebrow: 'Lunch & Grill',
       titleLine1: 'Beautiful food & cocktails,',
       titleLine2: 'delivered to your table.',
-      subtitle: 'A modern restaurant with seasonal dishes, house infusions, and a signature bar program. Warm atmosphere, late dinners, and curated music every night.',
+      subtitle:
+        'A modern restaurant with seasonal dishes, house infusions, and a signature bar program. Warm atmosphere, late dinners, and curated music every night.',
       exploreMenu: 'Explore menu',
       placeOrder: 'Place an order',
       reviewsTitle: 'Guest reviews',
@@ -24,8 +25,8 @@ const translations = {
         privateTitle: 'Private dining',
         privateText: 'Intimate tables, private events, and custom tasting sets.',
         liveTitle: 'Live evenings',
-        liveText: 'DJ sets, vinyl nights, and cozy ambiance after 20:00.'
-      }
+        liveText: 'DJ sets, vinyl nights, and cozy ambiance after 20:00.',
+      },
     },
     menu: {
       heroEyebrow: 'Lunch & Dinner',
@@ -36,7 +37,7 @@ const translations = {
       heroMeta3: 'Minsk/Vilnius',
       tabs: {
         drinks: 'Drinks',
-        food: 'Food'
+        food: 'Food',
       },
       categories: {
         cocktails: 'Cocktails',
@@ -56,7 +57,7 @@ const translations = {
         snacks: 'Snacks',
         soups: 'Soups',
         deserts: 'Desserts',
-        kids: 'Kids'
+        kids: 'Kids',
       },
       itemPrefix: {
         cocktail: 'Cocktail',
@@ -76,9 +77,9 @@ const translations = {
         snack: 'Snack',
         soup: 'Soup',
         desert: 'Dessert',
-        kidsMenu: 'Kids menu'
+        kidsMenu: 'Kids menu',
       },
-      add: 'Add'
+      add: 'Add',
     },
     order: {
       title: 'Your order',
@@ -90,7 +91,7 @@ const translations = {
       accepted: 'Order accepted',
       loading: 'Loading...',
       logout: 'Logout',
-      delete: 'Delete'
+      delete: 'Delete',
     },
     auth: {
       login: 'Login',
@@ -98,12 +99,13 @@ const translations = {
       email: 'Email',
       password: 'Password',
       toggleToRegister: "Don't have an account? Register",
-      toggleToLogin: 'Already have an account? Login'
+      toggleToLogin: 'Already have an account? Login',
     },
     events: {
       heroEyebrow: 'Events & Promotions',
       heroTitle: 'Live nights, seasonal offers, and curated experiences.',
-      heroSubtitle: 'We host weekly tastings, live sets, and limited menus. Book a table or join the next event and enjoy the new season lineup.',
+      heroSubtitle:
+        'We host weekly tastings, live sets, and limited menus. Book a table or join the next event and enjoy the new season lineup.',
       currentTitle: 'Current promotions',
       currentSub: 'Happening this week — available tonight.',
       upcomingTitle: 'Upcoming events',
@@ -113,7 +115,7 @@ const translations = {
       nowTag: 'Now',
       upcomingTag: 'Upcoming',
       pastTag: 'Past',
-      noCurrent: 'No current promos today.'
+      noCurrent: 'No current promos today.',
     },
     promos: {
       monTueTitle: 'Monday & Tuesday',
@@ -125,7 +127,7 @@ const translations = {
       friSatTitle: 'Friday & Saturday',
       friSatSub: '4+1 on tinctures',
       sunTitle: 'Sunday',
-      sunSub: '5+5 on tinctures'
+      sunSub: '5+5 on tinctures',
     },
     eventsData: {
       winterNegroni: 'Winter Negroni Week',
@@ -139,7 +141,7 @@ const translations = {
       oldFashioned: 'Old Fashioned Night',
       oldFashionedDesc: 'Smoked cocktails and bourbon pairings',
       holiday: 'Holiday Weekend Sessions',
-      holidayDesc: 'DJ set + festive specials'
+      holidayDesc: 'DJ set + festive specials',
     },
     coctails: {
       mojito: 'Mojito',
@@ -149,7 +151,7 @@ const translations = {
       cubaLibre: 'Cuba Libre',
       pinaColada: 'Pina Colada',
       blueLagoon: 'Blue Lagoon',
-      cosmopolitan: 'Cosmopolitan'
+      cosmopolitan: 'Cosmopolitan',
     },
     tincture: {
       chocolate: 'Chocolate',
@@ -158,60 +160,62 @@ const translations = {
       strawberry: 'Strawberry',
       watermelon: 'Watermelon',
       kiwi: 'Kiwi',
-      apple: 'Apple'
+      apple: 'Apple',
     },
     wine: {
       white: 'White',
       red: 'Red',
-      pink: 'Pink'
+      pink: 'Pink',
     },
     vodka: {
       finlandia: 'Finlandia',
-      svayak: 'Svayak'
+      svayak: 'Svayak',
     },
     whiskey: {
       jimBeam: 'Jim Beam',
       jackDaniels: 'Jack Daniels',
-      jameson: 'Jameson'
+      jameson: 'Jameson',
     },
     cognac: {
-      hennessy: 'Hennessy'
+      hennessy: 'Hennessy',
     },
     beer: {
       bud: 'Bud',
-      blanc: 'Blanc'
+      blanc: 'Blanc',
     },
     buttons: {
-      login: 'Login'
-    }
+      login: 'Login',
+    },
   },
   ru: {
     brand: {
       name: 'London Grill',
-      tagline: 'Grill & Bar'
+      tagline: 'Grill & Bar',
     },
     nav: {
       menu: 'Меню',
       events: 'События',
-      login: 'Войти'
+      login: 'Войти',
     },
     home: {
       eyebrow: 'Ланч и гриль',
       titleLine1: 'Красивые блюда и коктейли,',
       titleLine2: 'подаются прямо к вашему столу.',
-      subtitle: 'Современный ресторан с сезонными блюдами, фирменными настойками и авторской барной картой. Тёплая атмосфера, поздние ужины и музыка каждый вечер.',
+      subtitle:
+        'Современный ресторан с сезонными блюдами, фирменными настойками и авторской барной картой. Тёплая атмосфера, поздние ужины и музыка каждый вечер.',
       exploreMenu: 'Открыть меню',
       placeOrder: 'Сделать заказ',
       reviewsTitle: 'Отзывы гостей',
       reviewsSub: '4.9 из 5 на основе 1 200+ визитов',
       highlights: {
         seasonalTitle: 'Сезонное меню',
-        seasonalText: 'Локальные продукты, продуманные сочетания и новые предложения каждую неделю.',
+        seasonalText:
+          'Локальные продукты, продуманные сочетания и новые предложения каждую неделю.',
         privateTitle: 'Частные ужины',
         privateText: 'Интимные столы, приватные события и кастомные дегустации.',
         liveTitle: 'Живые вечера',
-        liveText: 'DJ-сеты, виниловые ночи и уютная атмосфера после 20:00.'
-      }
+        liveText: 'DJ-сеты, виниловые ночи и уютная атмосфера после 20:00.',
+      },
     },
     menu: {
       heroEyebrow: 'Ланч и ужин',
@@ -222,7 +226,7 @@ const translations = {
       heroMeta3: 'Минск/Вильнюс',
       tabs: {
         drinks: 'Напитки',
-        food: 'Еда'
+        food: 'Еда',
       },
       categories: {
         cocktails: 'Коктейли',
@@ -242,7 +246,7 @@ const translations = {
         snacks: 'Закуски',
         soups: 'Супы',
         deserts: 'Десерты',
-        kids: 'Детское меню'
+        kids: 'Детское меню',
       },
       itemPrefix: {
         cocktail: 'Коктейль',
@@ -262,9 +266,9 @@ const translations = {
         snack: 'Закуска',
         soup: 'Суп',
         desert: 'Десерт',
-        kidsMenu: 'Детское меню'
+        kidsMenu: 'Детское меню',
       },
-      add: 'Добавить'
+      add: 'Добавить',
     },
     order: {
       title: 'Ваш заказ',
@@ -276,7 +280,7 @@ const translations = {
       accepted: 'Заказ принят',
       loading: 'Загрузка...',
       logout: 'Выйти',
-      delete: 'Удалить'
+      delete: 'Удалить',
     },
     auth: {
       login: 'Вход',
@@ -284,12 +288,13 @@ const translations = {
       email: 'Email',
       password: 'Пароль',
       toggleToRegister: 'Нет аккаунта? Регистрация',
-      toggleToLogin: 'Уже есть аккаунт? Войти'
+      toggleToLogin: 'Уже есть аккаунт? Войти',
     },
     events: {
       heroEyebrow: 'События и акции',
       heroTitle: 'Вечеринки, сезонные предложения и атмосферные ужины.',
-      heroSubtitle: 'Мы проводим дегустации, живые выступления и лимитированные меню. Бронируйте стол или приходите на следующую программу.',
+      heroSubtitle:
+        'Мы проводим дегустации, живые выступления и лимитированные меню. Бронируйте стол или приходите на следующую программу.',
       currentTitle: 'Текущие акции',
       currentSub: 'Действуют сейчас — доступны сегодня.',
       upcomingTitle: 'Будущие события',
@@ -299,7 +304,7 @@ const translations = {
       nowTag: 'Сейчас',
       upcomingTag: 'Скоро',
       pastTag: 'Прошло',
-      noCurrent: 'Сегодня нет активных акций.'
+      noCurrent: 'Сегодня нет активных акций.',
     },
     promos: {
       monTueTitle: 'Понедельник и вторник',
@@ -311,7 +316,7 @@ const translations = {
       friSatTitle: 'Пятница и суббота',
       friSatSub: '4+1 на настойки',
       sunTitle: 'Воскресенье',
-      sunSub: '5+5 на настойки'
+      sunSub: '5+5 на настойки',
     },
     eventsData: {
       winterNegroni: 'Неделя негрони',
@@ -325,7 +330,7 @@ const translations = {
       oldFashioned: 'Ночь Old Fashioned',
       oldFashionedDesc: 'Копчёные коктейли и бурбон-пейринги',
       holiday: 'Праздничный уикенд',
-      holidayDesc: 'DJ-сет и специальные предложения'
+      holidayDesc: 'DJ-сет и специальные предложения',
     },
     coctails: {
       mojito: 'Мохито',
@@ -335,7 +340,7 @@ const translations = {
       cubaLibre: 'Куба Либре',
       pinaColada: 'Пина Колада',
       blueLagoon: 'Голубая лагуна',
-      cosmopolitan: 'Космополитен'
+      cosmopolitan: 'Космополитен',
     },
     tincture: {
       chocolate: 'Шоколад',
@@ -344,33 +349,33 @@ const translations = {
       strawberry: 'Клубника',
       watermelon: 'Арбуз',
       kiwi: 'Киви',
-      apple: 'Яблоко'
+      apple: 'Яблоко',
     },
     wine: {
       white: 'Белое',
       red: 'Красное',
-      pink: 'Розовое'
+      pink: 'Розовое',
     },
     vodka: {
       finlandia: 'Финляндия',
-      svayak: 'Сваяк'
+      svayak: 'Сваяк',
     },
     whiskey: {
       jimBeam: 'Jim Beam',
       jackDaniels: 'Jack Daniels',
-      jameson: 'Jameson'
+      jameson: 'Jameson',
     },
     cognac: {
-      hennessy: 'Hennessy'
+      hennessy: 'Hennessy',
     },
     beer: {
       bud: 'Bud',
-      blanc: 'Blanc'
+      blanc: 'Blanc',
     },
     buttons: {
-      login: 'Войти'
-    }
-  }
+      login: 'Войти',
+    },
+  },
 };
 
 export default translations;

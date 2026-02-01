@@ -10,19 +10,19 @@ import Auth from './components/Auth/Auth';
 
 const App = (props) => {
   return (
-    <div className='app-wrapper'>
+    <div className="app-wrapper">
       <Header />
-      <div className='app-wrapper-content'>
+      <div className="app-wrapper-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />
-          <Route path="/orders" element={<Order/>} />
-          <Route path="/menu" element={<Menu/>} />
-          <Route path="/events" element={<Slider/>} />
+          <Route path="/orders" element={<Order />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/events" element={<Slider />} />
         </Routes>
       </div>
     </div>
   );
-}
+};
 
 export default App;

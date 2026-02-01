@@ -18,8 +18,12 @@ const Home = () => {
           </h1>
           <p className={styles.subtitle}>{t('home.subtitle')}</p>
           <div className={styles.actions}>
-            <Link to="/menu" className={styles.primaryButton}>{t('home.exploreMenu')}</Link>
-            <Link to="/orders" className={styles.ghostButton}>{t('home.placeOrder')}</Link>
+            <Link to="/menu" className={styles.primaryButton}>
+              {t('home.exploreMenu')}
+            </Link>
+            <Link to="/orders" className={styles.ghostButton}>
+              {t('home.placeOrder')}
+            </Link>
           </div>
           <div className={styles.trustRow}>
             <div className={styles.trustBadge}>★</div>
@@ -34,7 +38,7 @@ const Home = () => {
           <div className={styles.photoFrame}>
             <img src={heroImage} alt="Restaurant table" loading="lazy" decoding="async" />
           </div>
-       
+
           <div className={styles.glow}></div>
           <div className={styles.dots}></div>
         </div>

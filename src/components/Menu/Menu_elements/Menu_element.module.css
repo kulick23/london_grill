@@ -6,7 +6,9 @@
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(96, 126, 107, 0.15);
   box-shadow: 0 14px 30px rgba(15, 18, 16, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .itemContainer:hover {
@@ -54,7 +56,9 @@
   color: #f6f1e8;
   background: rgb(96, 126, 107);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .border:hover {

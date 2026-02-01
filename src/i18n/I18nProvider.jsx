@@ -28,10 +28,13 @@ export const I18nProvider = ({ children }) => {
       const fallback = getNested(translations.en, key);
       return fallback !== undefined ? fallback : key;
     },
-    [language]
+    [language],
   );
 
-  const value = useMemo(() => ({ language, setLanguage: changeLanguage, t }), [language, changeLanguage, t]);
+  const value = useMemo(
+    () => ({ language, setLanguage: changeLanguage, t }),
+    [language, changeLanguage, t],
+  );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 };

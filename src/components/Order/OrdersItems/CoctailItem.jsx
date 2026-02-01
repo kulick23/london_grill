@@ -19,7 +19,13 @@ const CoctailItem = (props) => {
 
   return (
     <div className={s.coctail}>
-      <img src={props.img} alt={props.name} className={s.coctailImage} loading="lazy" decoding="async" />
+      <img
+        src={props.img}
+        alt={props.name}
+        className={s.coctailImage}
+        loading="lazy"
+        decoding="async"
+      />
       <div className={s.amount2}>{props.name} </div>
       <div className={s.amount}>{props.price} $</div>
       <div className={s.quantity}>
@@ -27,8 +33,9 @@ const CoctailItem = (props) => {
         <span>{props.quantity}</span>
         <button onClick={increaseQuantity}>+</button>
       </div>
-      <button onClick={removeOrder} className={s.removeButton}>{t('order.delete')}</button>
-    
+      <button onClick={removeOrder} className={s.removeButton}>
+        {t('order.delete')}
+      </button>
     </div>
   );
 };
