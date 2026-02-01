@@ -2,11 +2,7 @@ import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Order from './components/Order/Order';
-import Menu from './components/Menu/Menu';
-import Slider from './components/Party/Slider';
-import Auth from './components/Auth/Auth';
+import routes from './routes.jsx';
 
 const App = (props) => {
   return (
@@ -14,11 +10,9 @@ const App = (props) => {
       <Header />
       <div className="app-wrapper-content">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/orders" element={<Order />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/events" element={<Slider />} />
+          {routes.map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))}
         </Routes>
       </div>
     </div>
