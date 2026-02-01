@@ -152,9 +152,16 @@
         flex-direction: column;
         gap: 16px;
         align-items: flex-start;
+        padding: 14px 5vw;
     }
     .links {
         gap: 10px;
+    }
+    .brandName {
+        font-size: 20px;
+    }
+    .brandTag {
+        letter-spacing: 0.18em;
     }
     .cartButton {
         margin-left: 0;
@@ -164,5 +171,24 @@
     }
     .langButton {
         margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .links {
+        width: 100%;
+    }
+    .link {
+        padding: 8px 14px;
+        font-size: 11px;
+    }
+    .cartButton {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+    }
+    .cartButton img {
+        width: 20px;
+        height: 20px;
     }
 }

@@ -8,3 +8,15 @@
   flex: 1;
   padding: 40px 6vw 80px;
 }
+
+@media (max-width: 720px) {
+  .app-wrapper-content {
+    padding: 28px 5vw 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-wrapper-content {
+    padding: 22px 5vw 48px;
+  }
+}

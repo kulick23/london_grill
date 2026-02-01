@@ -175,3 +175,27 @@
     grid-column: 2 / -1;
   }
 }
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 28px;
+  }
+  .profileNote {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+  .orderButton,
+  .orderButtonSecondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .actions {
+    width: 100%;
+  }
+  .coctail {
+    padding: 14px;
+  }
+  .quantity {
+    gap: 6px;
+  }
+}

@@ -171,6 +171,9 @@
 }
 
 @media (max-width: 720px) {
+   .page {
+      gap: 40px;
+   }
    .heroContent {
       padding: 36px;
    }
@@ -180,5 +183,33 @@
    .heroMeta {
       flex-direction: column;
       gap: 6px;
+   }
+   .groupTabs {
+      width: 100%;
+   }
+   .categoryTabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
+   }
+   .categoryTab,
+   .categoryTabActive {
+      white-space: nowrap;
+   }
+   .menu {
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+   }
+}
+
+@media (max-width: 480px) {
+   .heroContent {
+      padding: 28px;
+   }
+   .heroTitle {
+      font-size: 28px;
+   }
+   .menu {
+      grid-template-columns: 1fr;
    }
 }

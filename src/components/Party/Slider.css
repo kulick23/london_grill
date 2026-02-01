@@ -300,6 +300,10 @@
 
   .promo-card {
     grid-template-columns: 1fr;
+    height: auto;
+  }
+  .promo-card__media {
+    height: 240px;
   }
 
   .promo-arrow--left {
@@ -308,5 +312,38 @@
 
   .promo-arrow--right {
     right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .events-page {
+    gap: 40px;
+  }
+  .events-hero {
+    padding: 24px;
+  }
+  .events-hero h1 {
+    font-size: 28px;
+  }
+  .promo-card__media {
+    height: 200px;
+  }
+  .promo-card__title {
+    font-size: 22px;
+  }
+  .promo-card__subtitle {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+  .promo-card__content {
+    padding: 18px;
+  }
+  .promo-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  .event-card img {
+    height: 180px;
   }
 }
