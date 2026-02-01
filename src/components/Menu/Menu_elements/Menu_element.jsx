@@ -1,29 +1,41 @@
 import React from 'react';
 import s from './Menu_element.module.css';
 import orderStore from '../../../store/OrderStore';
+import { auth } from '../../../firebase';
+import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../../i18n/I18nProvider';
 
 const MenuElement = (props) => {
+  const navigate = useNavigate();
+  const { t } = useI18n();
+
   const addToOrder = () => {
+    if (!auth.currentUser) {
+      navigate('/auth');
+      return;
+    }
     orderStore.addOrder({
       id: props.id,
       name: props.name,
       price: props.count,
       volume: props.ml,
-      image: props.img
+      image: props.img,
     });
   };
 
   return (
     <div className={s.itemContainer}>
       <div className={s.item}>
-        <img src={props.img} alt={props.name} />
+        <img src={props.img} alt={props.name} loading="lazy" decoding="async" />
       </div>
       <div className={s.text}>
         {props.name}
-        <div>{props.ml} ml</div>
+        {props.ml ? <div>{props.ml} ml</div> : null}
       </div>
       <div className={s.text2}>{props.count} $</div>
-      <button onClick={addToOrder} className={s.border}>Add</button>
+      <button onClick={addToOrder} className={s.border}>
+        {t('menu.add')}
+      </button>
     </div>
   );
 };

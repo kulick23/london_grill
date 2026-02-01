@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import styles from './Auth.module.css';
+import { useI18n } from '../../i18n/I18nProvider';
+import { useToast } from '../Toast/ToastProvider';
 
 const Auth = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { t } = useI18n();
+  const { showToast } = useToast();
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -18,36 +22,36 @@ const Auth = () => {
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
-      navigate('/profile');
+      navigate('/orders');
     } catch (error) {
-      alert(error.message);
+      showToast(error.message, 'error');
     }
   };
 
   return (
     <div className={styles.authContainer}>
-      <h2>{isRegister ? 'Register' : 'Login'}</h2>
+      <h2 className={styles.title}>{isRegister ? t('auth.register') : t('auth.login')}</h2>
       <form onSubmit={handleAuth} className={styles.form}>
         <input
           type="email"
-          placeholder="Email"
+          placeholder={t('auth.email')}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className={styles.input}
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder={t('auth.password')}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className={styles.input}
         />
         <button type="submit" className={styles.button}>
-          {isRegister ? 'Register' : 'Login'}
+          {isRegister ? t('auth.register') : t('auth.login')}
         </button>
       </form>
       <button onClick={() => setIsRegister(!isRegister)} className={styles.toggleButton}>
-        {isRegister ? 'Already have an account? Login' : "Don't have an account? Register"}
+        {isRegister ? t('auth.toggleToLogin') : t('auth.toggleToRegister')}
       </button>
     </div>
   );
