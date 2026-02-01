@@ -7,7 +7,7 @@ import Slide5 from '../assets/events/event5.webp';
 const Slide6 = Slide1;
 import Promo1 from '../assets/promo/IMG_2934_resized-min-884x590.jpg';
 import Promo2 from '../assets/promo/DSC_6923.jpg';
-import Promo3 from '../assets/promo/Настойки_74_resized-885x590.jpg';
+import Promo3 from '../assets/promo/Nastoyki_74_resized-885x590.jpg';
 import Promo4 from '../assets/promo/Thursday.jpg';
 import Promo5 from '../assets/promo/Sunday.jpg';
 
