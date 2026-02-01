@@ -8,12 +8,14 @@ import { auth } from '../../firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../i18n/I18nProvider';
+import { useToast } from '../Toast/ToastProvider';
 
 const Order = observer(() => {
   const [user, setUser] = useState(null);
   const [selectedTable, setSelectedTable] = useState(null);
   const navigate = useNavigate();
   const { t } = useI18n();
+  const { showToast } = useToast();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -32,7 +34,7 @@ const Order = observer(() => {
       await signOut(auth);
       navigate('/auth');
     } catch (error) {
-      alert(error.message);
+      showToast(error.message, 'error');
     }
   };
 
@@ -42,7 +44,7 @@ const Order = observer(() => {
 
   const handleOrder = () => {
     if (selectedTable && orderStore.orders.length > 0) {
-      alert(t('order.accepted'));
+      showToast(t('order.accepted'), 'success');
       orderStore.clearOrders();
     }
   };

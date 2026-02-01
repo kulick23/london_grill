@@ -4,6 +4,7 @@ import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import styles from './Auth.module.css';
 import { useI18n } from '../../i18n/I18nProvider';
+import { useToast } from '../Toast/ToastProvider';
 
 const Auth = () => {
   const [isRegister, setIsRegister] = useState(false);
@@ -11,6 +12,7 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { t } = useI18n();
+  const { showToast } = useToast();
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const Auth = () => {
       }
       navigate('/orders');
     } catch (error) {
-      alert(error.message);
+      showToast(error.message, 'error');
     }
   };
 
