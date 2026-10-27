@@ -66,6 +66,9 @@
   font: inherit;
   color-scheme: light;
 }
+.experience select {
+  padding-right: 42px;
+}
 .experience textarea {
   resize: vertical;
 }

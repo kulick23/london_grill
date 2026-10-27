@@ -324,7 +324,7 @@
   width: 100%;
   min-width: 0;
   min-height: 54px;
-  padding: 10px 14px;
+  padding: 10px 42px 10px 14px;
   color: var(--restaurant-ink);
   border: 1px solid var(--restaurant-ink);
   border-radius: 0;
