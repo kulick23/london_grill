@@ -15,6 +15,7 @@ const Header = observer(() => {
   const { language, setLanguage, t } = useI18n();
 
   useEffect(() => {
+    if (!auth) return;
     const unsub = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });

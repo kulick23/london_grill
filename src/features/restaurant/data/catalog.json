@@ -1,0 +1,875 @@
+{
+  "categories": [
+    {
+      "id": "burgers",
+      "ru": "Бургеры",
+      "en": "Burgers"
+    },
+    {
+      "id": "meals",
+      "ru": "Горячее",
+      "en": "Hot plates"
+    },
+    {
+      "id": "salads",
+      "ru": "Салаты",
+      "en": "Salads"
+    },
+    {
+      "id": "snacks",
+      "ru": "Закуски",
+      "en": "Snacks"
+    },
+    {
+      "id": "soups",
+      "ru": "Супы",
+      "en": "Soups"
+    },
+    {
+      "id": "deserts",
+      "ru": "Десерты",
+      "en": "Desserts"
+    },
+    {
+      "id": "kids",
+      "ru": "Детское",
+      "en": "For children"
+    },
+    {
+      "id": "burger-sets",
+      "ru": "Бургер-сеты",
+      "en": "Burger sets"
+    },
+    {
+      "id": "naked-burger",
+      "ru": "Без булочки",
+      "en": "Bunless burgers"
+    },
+    {
+      "id": "naked-burger-sets",
+      "ru": "Нейкед-сеты",
+      "en": "Bunless sets"
+    },
+    {
+      "id": "cocktails",
+      "ru": "Коктейли",
+      "en": "Cocktails"
+    }
+  ],
+  "items": [
+    {
+      "id": "burgers-de71382c",
+      "category": "burgers",
+      "nameRu": "Бургер №1",
+      "nameEn": "Burger 1",
+      "price": 24,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burgers-2b4e155d",
+      "category": "burgers",
+      "nameRu": "Бургер №2",
+      "nameEn": "Burger 2",
+      "price": 25,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burgers-9180ce2d",
+      "category": "burgers",
+      "nameRu": "Бургер №3",
+      "nameEn": "Burger 3",
+      "price": 26,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burgers-e8d8c43e",
+      "category": "burgers",
+      "nameRu": "Бургер №4",
+      "nameEn": "Burger 4",
+      "price": 24,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burgers-c1cb20d0",
+      "category": "burgers",
+      "nameRu": "Бургер №5",
+      "nameEn": "Burger 5",
+      "price": 25,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burgers-c9c41df1",
+      "category": "burgers",
+      "nameRu": "Бургер №6",
+      "nameEn": "Burger 6",
+      "price": 26,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-338df6a9",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №1",
+      "nameEn": "Hot plate 1",
+      "price": 29,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-5bdc423f",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №2",
+      "nameEn": "Hot plate 2",
+      "price": 30,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-c121c51c",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №3",
+      "nameEn": "Hot plate 3",
+      "price": 31,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-c7f463e2",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №4",
+      "nameEn": "Hot plate 4",
+      "price": 29,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-fc36d707",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №5",
+      "nameEn": "Hot plate 5",
+      "price": 30,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-47fe0bc3",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №6",
+      "nameEn": "Hot plate 6",
+      "price": 31,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-f010db6b",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №7",
+      "nameEn": "Hot plate 7",
+      "price": 29,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-21fdcb1e",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №8",
+      "nameEn": "Hot plate 8",
+      "price": 30,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-70744427",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №9",
+      "nameEn": "Hot plate 9",
+      "price": 31,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-b1f2dfe4",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №10",
+      "nameEn": "Hot plate 10",
+      "price": 29,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-26a3f4a5",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №11",
+      "nameEn": "Hot plate 11",
+      "price": 30,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-7a4b0f26",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №12",
+      "nameEn": "Hot plate 12",
+      "price": 31,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-fd9e4b91",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №13",
+      "nameEn": "Hot plate 13",
+      "price": 29,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "meals-f4a79b87",
+      "category": "meals",
+      "nameRu": "Горячее блюдо №14",
+      "nameEn": "Hot plate 14",
+      "price": 30,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-13a23273",
+      "category": "salads",
+      "nameRu": "Салат №1",
+      "nameEn": "Salad 1",
+      "price": 18,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-3e2e74b6",
+      "category": "salads",
+      "nameRu": "Салат №2",
+      "nameEn": "Salad 2",
+      "price": 19,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-b0fd8d68",
+      "category": "salads",
+      "nameRu": "Салат №3",
+      "nameEn": "Salad 3",
+      "price": 20,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-1a091cca",
+      "category": "salads",
+      "nameRu": "Салат №4",
+      "nameEn": "Salad 4",
+      "price": 18,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-d6d35b0d",
+      "category": "salads",
+      "nameRu": "Салат №5",
+      "nameEn": "Salad 5",
+      "price": 19,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-213a423d",
+      "category": "salads",
+      "nameRu": "Салат №6",
+      "nameEn": "Salad 6",
+      "price": 20,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-8aa990ef",
+      "category": "salads",
+      "nameRu": "Салат №7",
+      "nameEn": "Salad 7",
+      "price": 18,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-365376bb",
+      "category": "salads",
+      "nameRu": "Салат №8",
+      "nameEn": "Salad 8",
+      "price": 19,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-04ea37aa",
+      "category": "salads",
+      "nameRu": "Салат №9",
+      "nameEn": "Salad 9",
+      "price": 20,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "salads-bbc89b60",
+      "category": "salads",
+      "nameRu": "Салат №10",
+      "nameEn": "Salad 10",
+      "price": 18,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-5abc837d",
+      "category": "snacks",
+      "nameRu": "Закуска №1",
+      "nameEn": "Snack 1",
+      "price": 16,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-c82288cc",
+      "category": "snacks",
+      "nameRu": "Закуска №2",
+      "nameEn": "Snack 2",
+      "price": 17,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-0f52fcca",
+      "category": "snacks",
+      "nameRu": "Закуска №3",
+      "nameEn": "Snack 3",
+      "price": 18,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-4b9b3dc3",
+      "category": "snacks",
+      "nameRu": "Закуска №4",
+      "nameEn": "Snack 4",
+      "price": 16,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-dc7e2169",
+      "category": "snacks",
+      "nameRu": "Закуска №5",
+      "nameEn": "Snack 5",
+      "price": 17,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-bd359d45",
+      "category": "snacks",
+      "nameRu": "Закуска №6",
+      "nameEn": "Snack 6",
+      "price": 18,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-8faba0b3",
+      "category": "snacks",
+      "nameRu": "Закуска №7",
+      "nameEn": "Snack 7",
+      "price": 16,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-749714d0",
+      "category": "snacks",
+      "nameRu": "Закуска №8",
+      "nameEn": "Snack 8",
+      "price": 17,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "snacks-43190e9f",
+      "category": "snacks",
+      "nameRu": "Закуска №9",
+      "nameEn": "Snack 9",
+      "price": 18,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "soups-06a2a1c2",
+      "category": "soups",
+      "nameRu": "Суп №1",
+      "nameEn": "Soup 1",
+      "price": 14,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "deserts-8b627202",
+      "category": "deserts",
+      "nameRu": "Десерт №1",
+      "nameEn": "Dessert 1",
+      "price": 12,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "deserts-2fe71950",
+      "category": "deserts",
+      "nameRu": "Десерт №2",
+      "nameEn": "Dessert 2",
+      "price": 13,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "kids-90ab4b4a",
+      "category": "kids",
+      "nameRu": "Детское блюдо №1",
+      "nameEn": "Children’s plate 1",
+      "price": 13,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "kids-230092c7",
+      "category": "kids",
+      "nameRu": "Детское блюдо №2",
+      "nameEn": "Children’s plate 2",
+      "price": 14,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "kids-f9760c3c",
+      "category": "kids",
+      "nameRu": "Детское блюдо №3",
+      "nameEn": "Children’s plate 3",
+      "price": 15,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "kids-d2363aeb",
+      "category": "kids",
+      "nameRu": "Детское блюдо №4",
+      "nameEn": "Children’s plate 4",
+      "price": 13,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "kids-0e1e9e77",
+      "category": "kids",
+      "nameRu": "Детское блюдо №5",
+      "nameEn": "Children’s plate 5",
+      "price": 14,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "kids-7b76afb7",
+      "category": "kids",
+      "nameRu": "Детское блюдо №6",
+      "nameEn": "Children’s plate 6",
+      "price": 15,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burger-sets-9bf609d1",
+      "category": "burger-sets",
+      "nameRu": "Бургер-сет №1",
+      "nameEn": "Burger set 1",
+      "price": 32,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burger-sets-4f4821da",
+      "category": "burger-sets",
+      "nameRu": "Бургер-сет №2",
+      "nameEn": "Burger set 2",
+      "price": 33,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burger-sets-82b76dc4",
+      "category": "burger-sets",
+      "nameRu": "Бургер-сет №3",
+      "nameEn": "Burger set 3",
+      "price": 34,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burger-sets-966d6c26",
+      "category": "burger-sets",
+      "nameRu": "Бургер-сет №4",
+      "nameEn": "Burger set 4",
+      "price": 32,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burger-sets-1a35ff80",
+      "category": "burger-sets",
+      "nameRu": "Бургер-сет №5",
+      "nameEn": "Burger set 5",
+      "price": 33,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "burger-sets-871cd7a4",
+      "category": "burger-sets",
+      "nameRu": "Бургер-сет №6",
+      "nameEn": "Burger set 6",
+      "price": 34,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-e2fe32d5",
+      "category": "naked-burger",
+      "nameRu": "Бургер без булочки №1",
+      "nameEn": "Bunless burger 1",
+      "price": 23,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-6112bf6a",
+      "category": "naked-burger",
+      "nameRu": "Бургер без булочки №2",
+      "nameEn": "Bunless burger 2",
+      "price": 24,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-ce934dcf",
+      "category": "naked-burger",
+      "nameRu": "Бургер без булочки №3",
+      "nameEn": "Bunless burger 3",
+      "price": 25,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-1929848a",
+      "category": "naked-burger",
+      "nameRu": "Бургер без булочки №4",
+      "nameEn": "Bunless burger 4",
+      "price": 23,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-efae62d2",
+      "category": "naked-burger",
+      "nameRu": "Бургер без булочки №5",
+      "nameEn": "Bunless burger 5",
+      "price": 24,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-0b02a507",
+      "category": "naked-burger",
+      "nameRu": "Бургер без булочки №6",
+      "nameEn": "Bunless burger 6",
+      "price": 25,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-sets-fa6852f6",
+      "category": "naked-burger-sets",
+      "nameRu": "Нейкед-сет №1",
+      "nameEn": "Bunless set 1",
+      "price": 30,
+      "volume": null,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-sets-054e3d33",
+      "category": "naked-burger-sets",
+      "nameRu": "Нейкед-сет №2",
+      "nameEn": "Bunless set 2",
+      "price": 31,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-sets-0f4cd643",
+      "category": "naked-burger-sets",
+      "nameRu": "Нейкед-сет №3",
+      "nameEn": "Bunless set 3",
+      "price": 32,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-sets-374117df",
+      "category": "naked-burger-sets",
+      "nameRu": "Нейкед-сет №4",
+      "nameEn": "Bunless set 4",
+      "price": 30,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-sets-83c89984",
+      "category": "naked-burger-sets",
+      "nameRu": "Нейкед-сет №5",
+      "nameEn": "Bunless set 5",
+      "price": 31,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "naked-burger-sets-54e57048",
+      "category": "naked-burger-sets",
+      "nameRu": "Нейкед-сет №6",
+      "nameEn": "Bunless set 6",
+      "price": 32,
+      "volume": null,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-80b8152c",
+      "category": "cocktails",
+      "nameRu": "BloodMary",
+      "nameEn": "BloodMary",
+      "price": 19,
+      "volume": 180,
+      "featured": true,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-51b3150e",
+      "category": "cocktails",
+      "nameRu": "BlueLagoon",
+      "nameEn": "BlueLagoon",
+      "price": 20,
+      "volume": 180,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-c65a78d4",
+      "category": "cocktails",
+      "nameRu": "Cosmopolitan",
+      "nameEn": "Cosmopolitan",
+      "price": 21,
+      "volume": 180,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-868df2f1",
+      "category": "cocktails",
+      "nameRu": "CubaLibre",
+      "nameEn": "CubaLibre",
+      "price": 19,
+      "volume": 180,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-eb3a2e6e",
+      "category": "cocktails",
+      "nameRu": "LongIsland",
+      "nameEn": "LongIsland",
+      "price": 20,
+      "volume": 180,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-0fc0e2c7",
+      "category": "cocktails",
+      "nameRu": "Mojito",
+      "nameEn": "Mojito",
+      "price": 21,
+      "volume": 180,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-4df1928b",
+      "category": "cocktails",
+      "nameRu": "PinaColada",
+      "nameEn": "PinaColada",
+      "price": 19,
+      "volume": 180,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    },
+    {
+      "id": "cocktails-94334e3a",
+      "category": "cocktails",
+      "nameRu": "SexOnTheBeach",
+      "nameEn": "SexOnTheBeach",
+      "price": 20,
+      "volume": 180,
+      "featured": false,
+      "descriptionRu": "Позиция демонстрационного меню. Состав и доступность уточняются.",
+      "descriptionEn": "A demonstration menu item. Ingredients and availability need confirmation."
+    }
+  ]
+}

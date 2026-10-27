@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local browser QA output
+/.playwright-mcp/
+/.taste-skill/inspect/
+
+/.taste-skill/**/inspect/

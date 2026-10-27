@@ -10,7 +10,7 @@ const MenuElement = (props) => {
   const { t } = useI18n();
 
   const addToOrder = () => {
-    if (!auth.currentUser) {
+    if (!auth?.currentUser) {
       navigate('/auth');
       return;
     }

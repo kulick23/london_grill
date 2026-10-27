@@ -1,0 +1,293 @@
+rules_version = '2';
+
+// Assumed model: authenticated guests own private bookings, carts, favorites and waitlist rows.
+// Restaurant administrators are identified by an admin custom claim or /admins/{uid} marker.
+// A booking may carry a bounded preorder. Guests may submit or revise only pending orders;
+// staff alone may accept, prepare, mark ready, complete or reject them.
+// Public availability and slot claims mirror confirmed private bookings atomically.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && (request.auth.token.get('admin', false) == true
+          || exists(/databases/$(database)/documents/admins/$(request.auth.uid)));
+    }
+
+    function validText(value, maximum) {
+      return value is string && value.size() > 0 && value.size() <= maximum;
+    }
+
+    function validPreorderItem(item) {
+      return item is map
+        && item.keys().hasOnly(['id', 'name', 'quantity', 'price'])
+        && validText(item.id, 100)
+        && validText(item.name, 160)
+        && item.quantity is int && item.quantity >= 1 && item.quantity <= 20
+        && item.price is number && item.price >= 0 && item.price <= 10000;
+    }
+
+    function validPreorder(items) {
+      return items is list && items.size() <= 12
+        && (items.size() < 1 || validPreorderItem(items[0]))
+        && (items.size() < 2 || validPreorderItem(items[1]))
+        && (items.size() < 3 || validPreorderItem(items[2]))
+        && (items.size() < 4 || validPreorderItem(items[3]))
+        && (items.size() < 5 || validPreorderItem(items[4]))
+        && (items.size() < 6 || validPreorderItem(items[5]))
+        && (items.size() < 7 || validPreorderItem(items[6]))
+        && (items.size() < 8 || validPreorderItem(items[7]))
+        && (items.size() < 9 || validPreorderItem(items[8]))
+        && (items.size() < 10 || validPreorderItem(items[9]))
+        && (items.size() < 11 || validPreorderItem(items[10]))
+        && (items.size() < 12 || validPreorderItem(items[11]));
+    }
+
+    function validOwnerBookingUpdate() {
+      let previousOrderStatus = resource.data.get('orderStatus', 'none');
+      let nextOrderStatus = request.resource.data.orderStatus;
+      let reservationTransition = request.resource.data.status == resource.data.status
+        || (resource.data.status == 'confirmed' && request.resource.data.status == 'cancelled');
+      let visitEditable = previousOrderStatus in ['none', 'pending', 'rejected', 'cancelled'];
+      let onlyCancellationFields = request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+        'status', 'orderStatus', 'slotIds', 'updatedAt', 'orderUpdatedAt'
+      ]);
+      let orderTransition =
+        (nextOrderStatus == previousOrderStatus
+          && (request.resource.data.preorder == resource.data.preorder
+            || nextOrderStatus == 'pending'))
+        || (previousOrderStatus in ['none', 'rejected', 'cancelled']
+          && nextOrderStatus == 'pending'
+          && request.resource.data.status == 'confirmed'
+          && request.resource.data.preorder.size() > 0)
+        || (nextOrderStatus == 'cancelled' && request.resource.data.status == 'cancelled');
+      return reservationTransition && orderTransition && (visitEditable || onlyCancellationFields);
+    }
+
+    function validAdminBookingUpdate() {
+      let previousOrderStatus = resource.data.get('orderStatus', 'none');
+      let nextOrderStatus = request.resource.data.orderStatus;
+      let orderUnchanged = nextOrderStatus == previousOrderStatus
+        && request.resource.data.preorder == resource.data.preorder;
+      let staffTransition =
+        (previousOrderStatus == 'pending' && nextOrderStatus in ['accepted', 'rejected'])
+        || (previousOrderStatus == 'accepted' && nextOrderStatus in ['preparing', 'rejected'])
+        || (previousOrderStatus == 'preparing' && nextOrderStatus == 'ready')
+        || (previousOrderStatus == 'ready' && nextOrderStatus == 'completed')
+        || (nextOrderStatus == 'cancelled' && request.resource.data.status == 'cancelled');
+      return (orderUnchanged || staffTransition)
+        && request.resource.data.preorder == resource.data.preorder;
+    }
+
+    function bookingRef(uid, bookingId) {
+      return /databases/$(database)/documents/users/$(uid)/bookings/$(bookingId);
+    }
+
+    function availabilityRef(bookingId) {
+      return /databases/$(database)/documents/availability/$(bookingId);
+    }
+
+    function slotRef(slotId) {
+      return /databases/$(database)/documents/reservationSlots/$(slotId);
+    }
+
+    function slotMatches(data, index) {
+      let slotId = data.slotIds[index];
+      return existsAfter(slotRef(slotId))
+        && getAfter(slotRef(slotId)).data.bookingId == data.id
+        && getAfter(slotRef(slotId)).data.ownerId == data.ownerId
+        && getAfter(slotRef(slotId)).data.tableId == data.tableId;
+    }
+
+    function validConfirmedSlots(data) {
+      return data.slotIds is list
+        && data.slotIds.size() == data.duration / 30
+        && data.slotIds.size() >= 2 && data.slotIds.size() <= 6
+        && slotMatches(data, 0) && slotMatches(data, 1)
+        && (data.slotIds.size() < 3 || slotMatches(data, 2))
+        && (data.slotIds.size() < 4 || slotMatches(data, 3))
+        && (data.slotIds.size() < 5 || slotMatches(data, 4))
+        && (data.slotIds.size() < 6 || slotMatches(data, 5));
+    }
+
+    function validBooking(data, uid, bookingId) {
+      return data.keys().hasOnly([
+          'id', 'ownerId', 'tableId', 'date', 'time', 'duration', 'guests', 'name', 'phone',
+          'notes', 'status', 'preorder', 'orderStatus', 'orderUpdatedAt', 'slotIds',
+          'startsAt', 'endsAt', 'createdAt', 'updatedAt'
+        ])
+        && data.id == bookingId && data.ownerId == uid
+        && validText(data.tableId, 20)
+        && data.date is string && data.date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && data.time is string && data.time.matches('^[0-9]{2}:(00|30)$')
+        && data.duration in [60, 90, 120, 150, 180]
+        && data.guests is int && data.guests >= 1 && data.guests <= 8
+        && validText(data.name, 100) && validText(data.phone, 30)
+        && data.notes is string && data.notes.size() <= 1000
+        && data.status in ['confirmed', 'cancelled']
+        && data.orderStatus in [
+          'none', 'pending', 'accepted', 'preparing', 'ready', 'completed', 'rejected', 'cancelled'
+        ]
+        && (data.preorder.size() > 0 || data.orderStatus == 'none')
+        && (data.status == 'confirmed' || data.orderStatus in ['none', 'cancelled'])
+        && data.startsAt is timestamp && data.endsAt is timestamp
+        && data.endsAt == data.startsAt + duration.value(data.duration, 'm')
+        && (data.status == 'cancelled' || data.startsAt > request.time - duration.value(5, 'm'))
+        && validPreorder(data.preorder)
+        && data.createdAt is timestamp && data.updatedAt is timestamp
+        && data.orderUpdatedAt is timestamp
+        && (data.status == 'confirmed'
+          ? validConfirmedSlots(data) && existsAfter(availabilityRef(bookingId))
+          : data.slotIds.size() == 0 && !existsAfter(availabilityRef(bookingId)));
+    }
+
+    function validAvailability(data, bookingId) {
+      let privateBooking = getAfter(bookingRef(request.auth.uid, bookingId)).data;
+      return data.keys().hasOnly([
+          'bookingId', 'tableId', 'date', 'time', 'duration', 'status', 'slotIds', 'startsAt', 'endsAt'
+        ])
+        && data.bookingId == bookingId
+        && data.status == 'confirmed'
+        && privateBooking.ownerId == request.auth.uid
+        && privateBooking.status == 'confirmed'
+        && data.tableId == privateBooking.tableId
+        && data.date == privateBooking.date
+        && data.time == privateBooking.time
+        && data.duration == privateBooking.duration
+        && data.slotIds == privateBooking.slotIds
+        && data.startsAt == privateBooking.startsAt
+        && data.endsAt == privateBooking.endsAt;
+    }
+
+    function validSlotClaim(data, slotId) {
+      return data.keys().hasOnly(['bookingId', 'ownerId', 'tableId', 'startsAt', 'endsAt'])
+        && data.ownerId == request.auth.uid
+        && data.bookingId is string
+        && data.tableId is string
+        && slotId in getAfter(bookingRef(request.auth.uid, data.bookingId)).data.slotIds
+        && existsAfter(availabilityRef(data.bookingId));
+    }
+
+    match /restaurant/config {
+      allow read: if signedIn();
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['tables', 'zones', 'settings', 'menuOverrides', 'updatedAt'])
+        && request.resource.data.tables is list && request.resource.data.tables.size() <= 30
+        && request.resource.data.zones is list && request.resource.data.zones.size() <= 10
+        && request.resource.data.settings is map
+        && request.resource.data.settings.keys().hasOnly(['duration', 'closedDates'])
+        && request.resource.data.settings.duration in [60, 90, 120, 150, 180]
+        && request.resource.data.settings.closedDates is list
+        && request.resource.data.settings.closedDates.size() <= 60
+        && request.resource.data.menuOverrides is map
+        && request.resource.data.menuOverrides.size() <= 150
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
+
+    match /admins/{uid} {
+      allow read: if isOwner(uid);
+      allow write: if false;
+    }
+
+    match /users/{uid}/bookings/{bookingId} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.orderUpdatedAt == request.time
+        && request.resource.data.orderStatus == 'none'
+        && request.resource.data.preorder.size() == 0
+        && validBooking(request.resource.data, uid, bookingId);
+      allow update: if (isOwner(uid) || isAdmin())
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.orderUpdatedAt == request.time
+        && ((isOwner(uid) && validOwnerBookingUpdate())
+          || (isAdmin() && validAdminBookingUpdate()))
+        && validBooking(request.resource.data, uid, bookingId);
+      allow delete: if false;
+    }
+
+    // Firestore collection-group queries must be authorized for every possible
+    // `bookings` path. This rule is read-only and remains admin-gated; owner
+    // writes and single-user reads continue through the stricter rule above.
+    match /{path=**}/bookings/{bookingId} {
+      allow read: if isAdmin();
+    }
+
+    match /availability/{bookingId} {
+      allow read: if signedIn();
+      allow create, update: if isAdmin()
+        || (signedIn() && validAvailability(request.resource.data, bookingId));
+      allow delete: if isAdmin()
+        || (signedIn()
+          && getAfter(bookingRef(request.auth.uid, bookingId)).data.status == 'cancelled');
+    }
+
+    match /reservationSlots/{slotId} {
+      allow read: if signedIn();
+      allow create: if isAdmin()
+        || (signedIn() && validSlotClaim(request.resource.data, slotId));
+      allow update: if isAdmin()
+        || (signedIn()
+          && resource.data.bookingId == request.resource.data.bookingId
+          && resource.data.ownerId == request.resource.data.ownerId
+          && validSlotClaim(request.resource.data, slotId));
+      allow delete: if isAdmin() || (signedIn()
+        && resource.data.ownerId == request.auth.uid
+        && !(slotId in getAfter(bookingRef(request.auth.uid, resource.data.bookingId)).data.slotIds));
+    }
+
+    match /users/{uid}/cart/{itemId} {
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['id', 'quantity'])
+        && request.resource.data.id == itemId
+        && request.resource.data.quantity is int
+        && request.resource.data.quantity >= 1 && request.resource.data.quantity <= 20;
+      allow delete: if isOwner(uid);
+    }
+
+    match /users/{uid}/favorites/{itemId} {
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['id'])
+        && request.resource.data.id == itemId;
+      allow delete: if isOwner(uid);
+    }
+
+    match /users/{uid}/waitlist/{entryId} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid)
+        && request.resource.data.keys().hasOnly([
+          'id', 'date', 'time', 'guests', 'duration', 'zone', 'name', 'phone', 'createdAt'
+        ])
+        && request.resource.data.id == entryId
+        && request.resource.data.date is string
+        && request.resource.data.time is string
+        && request.resource.data.guests is int
+        && request.resource.data.guests >= 1 && request.resource.data.guests <= 8
+        && request.resource.data.duration in [60, 90, 120, 150, 180]
+        && validText(request.resource.data.zone, 30)
+        && validText(request.resource.data.name, 100)
+        && validText(request.resource.data.phone, 30)
+        && request.resource.data.createdAt is string
+        && request.resource.data.createdAt.size() <= 40;
+      allow update: if false;
+      allow delete: if isOwner(uid) || isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

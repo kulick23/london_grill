@@ -23,14 +23,18 @@
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "format": "prettier --write \"src/**/*.{js,jsx,css}\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "node --test tests/reservations.test.mjs",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-projectbar-rules \"node --test tests/firestore.rules.test.mjs\""
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "firebase-tools": "^15.34.1",
     "gh-pages": "^6.3.0",
     "prettier": "^3.5.3",
     "vite": "^6.1.2"

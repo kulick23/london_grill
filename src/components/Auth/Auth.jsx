@@ -16,6 +16,7 @@ const Auth = () => {
 
   const handleAuth = async (e) => {
     e.preventDefault();
+    if (!auth) { showToast('Вход временно недоступен: Firebase не настроен.', 'error'); return; }
     try {
       if (isRegister) {
         await createUserWithEmailAndPassword(auth, email, password);
@@ -31,6 +32,7 @@ const Auth = () => {
   return (
     <div className={styles.authContainer}>
       <h2 className={styles.title}>{isRegister ? t('auth.register') : t('auth.login')}</h2>
+      {!auth && <p role="status">Вход временно недоступен: подключение Firebase не настроено.</p>}
       <form onSubmit={handleAuth} className={styles.form}>
         <input
           type="email"

@@ -18,6 +18,7 @@ const Order = observer(() => {
   const { showToast } = useToast();
 
   useEffect(() => {
+    if (!auth) { navigate('/auth'); return; }
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);

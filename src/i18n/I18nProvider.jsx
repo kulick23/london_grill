@@ -10,8 +10,8 @@ const getNested = (obj, path) => {
 
 export const I18nProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
-    if (typeof window === 'undefined') return 'en';
-    return window.localStorage.getItem('lang') || 'en';
+    if (typeof window === 'undefined') return 'ru';
+    return window.localStorage.getItem('lang') || 'ru';
   });
 
   const changeLanguage = useCallback((next) => {
